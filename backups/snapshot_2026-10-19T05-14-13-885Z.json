@@ -1,0 +1,239 @@
+{
+  "updatedAt": "2026-10-19T05:14:13.885Z",
+  "standings": [
+    {
+      "name": "Player 1",
+      "played": 6,
+      "won": 3,
+      "drawn": 1,
+      "lost": 2,
+      "fw": 20,
+      "fl": 16,
+      "bonus": 2,
+      "points": 22
+    },
+    {
+      "name": "Player 4",
+      "played": 6,
+      "won": 2,
+      "drawn": 1,
+      "lost": 3,
+      "fw": 18,
+      "fl": 18,
+      "bonus": 2,
+      "points": 20
+    },
+    {
+      "name": "Player 2",
+      "played": 6,
+      "won": 3,
+      "drawn": 2,
+      "lost": 1,
+      "fw": 19,
+      "fl": 17,
+      "bonus": 0,
+      "points": 19
+    },
+    {
+      "name": "Player 3",
+      "played": 6,
+      "won": 1,
+      "drawn": 2,
+      "lost": 3,
+      "fw": 15,
+      "fl": 21,
+      "bonus": 0,
+      "points": 15
+    }
+  ],
+  "breaks": [
+    {
+      "player": "Player 2",
+      "high": 89,
+      "total30": 4,
+      "total50": 2,
+      "total100": 0,
+      "list": [
+        89,
+        52,
+        42,
+        31
+      ]
+    },
+    {
+      "player": "Player 3",
+      "high": 65,
+      "total30": 1,
+      "total50": 1,
+      "total100": 0,
+      "list": [
+        65
+      ]
+    },
+    {
+      "player": "Player 1",
+      "high": 50,
+      "total30": 6,
+      "total50": 1,
+      "total100": 0,
+      "list": [
+        50,
+        40,
+        40,
+        37,
+        30,
+        30
+      ]
+    },
+    {
+      "player": "Player 4",
+      "high": 42,
+      "total30": 1,
+      "total50": 0,
+      "total100": 0,
+      "list": [
+        42
+      ]
+    }
+  ],
+  "fixtures": [
+    {
+      "id": "F1",
+      "leg": 1,
+      "date": "2026-10-20",
+      "home": "Player 1",
+      "away": "Player 2",
+      "homeScore": 6,
+      "awayScore": 0,
+      "homeBreaks": "30, 40, 50",
+      "awayBreaks": "31, 42, 52"
+    },
+    {
+      "id": "F2",
+      "leg": 1,
+      "date": "2026-10-20",
+      "home": "Player 1",
+      "away": "Player 3",
+      "homeScore": 5,
+      "awayScore": 1,
+      "homeBreaks": "40",
+      "awayBreaks": ""
+    },
+    {
+      "id": "F3",
+      "leg": 1,
+      "date": "2026-10-20",
+      "home": "Player 1",
+      "away": "Player 4",
+      "homeScore": 4,
+      "awayScore": 2,
+      "homeBreaks": "37, 30",
+      "awayBreaks": "42"
+    },
+    {
+      "id": "F4",
+      "leg": 1,
+      "date": "2026-10-20",
+      "home": "Player 2",
+      "away": "Player 3",
+      "homeScore": 3,
+      "awayScore": 3,
+      "homeBreaks": "89, 23",
+      "awayBreaks": "65"
+    },
+    {
+      "id": "F5",
+      "leg": 1,
+      "date": "2026-10-20",
+      "home": "Player 2",
+      "away": "Player 4",
+      "homeScore": 3,
+      "awayScore": 3,
+      "homeBreaks": "",
+      "awayBreaks": ""
+    },
+    {
+      "id": "F6",
+      "leg": 1,
+      "date": "2026-10-20",
+      "home": "Player 3",
+      "away": "Player 4",
+      "homeScore": 4,
+      "awayScore": 2,
+      "homeBreaks": "",
+      "awayBreaks": ""
+    },
+    {
+      "id": "F7",
+      "leg": 2,
+      "date": "2026-10-20",
+      "home": "Player 2",
+      "away": "Player 1",
+      "homeScore": 4,
+      "awayScore": 2,
+      "homeBreaks": "",
+      "awayBreaks": ""
+    },
+    {
+      "id": "F8",
+      "leg": 2,
+      "date": "2026-10-13",
+      "home": "Player 3",
+      "away": "Player 1",
+      "homeScore": 3,
+      "awayScore": 3,
+      "homeBreaks": "",
+      "awayBreaks": ""
+    },
+    {
+      "id": "F9",
+      "leg": 2,
+      "date": "2026-10-13",
+      "home": "Player 4",
+      "away": "Player 1",
+      "homeScore": 6,
+      "awayScore": 0,
+      "homeBreaks": "",
+      "awayBreaks": ""
+    },
+    {
+      "id": "F10",
+      "leg": 2,
+      "date": "2026-10-13",
+      "home": "Player 3",
+      "away": "Player 2",
+      "homeScore": 2,
+      "awayScore": 4,
+      "homeBreaks": "",
+      "awayBreaks": ""
+    },
+    {
+      "id": "F11",
+      "leg": 2,
+      "date": "2026-10-13",
+      "home": "Player 4",
+      "away": "Player 2",
+      "homeScore": 1,
+      "awayScore": 5,
+      "homeBreaks": "",
+      "awayBreaks": ""
+    },
+    {
+      "id": "F12",
+      "leg": 2,
+      "date": "2026-10-13",
+      "home": "Player 4",
+      "away": "Player 3",
+      "homeScore": 4,
+      "awayScore": 2,
+      "homeBreaks": "",
+      "awayBreaks": ""
+    }
+  ],
+  "rawPlayers": [
+    "Player 1",
+    "Player 2",
+    "Player 3",
+    "Player 4"
+  ]
+}
