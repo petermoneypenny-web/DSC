@@ -1,837 +1,231 @@
 {
-  "updatedAt": "2026-10-19T04:08:49.028Z",
+  "updatedAt": "2026-10-19T04:28:07.529Z",
   "standings": [
     {
-      "name": "Pete Moneypenny",
+      "name": "Pete M",
+      "played": 3,
+      "won": 2,
+      "drawn": 1,
+      "lost": 0,
+      "fw": 14,
+      "fl": 4,
+      "bonus": 2,
+      "points": 16
+    },
+    {
+      "name": "Jamie D",
       "played": 4,
-      "won": 4,
-      "drawn": 0,
-      "lost": 0,
-      "fw": 20,
-      "fl": 4,
-      "bonus": 4,
-      "points": 24
-    },
-    {
-      "name": "Barry Garwood",
-      "played": 3,
-      "won": 1,
-      "drawn": 2,
-      "lost": 0,
-      "fw": 11,
-      "fl": 7,
-      "bonus": 0,
-      "points": 11
-    },
-    {
-      "name": "Rory Dawson",
-      "played": 5,
-      "won": 1,
-      "drawn": 1,
-      "lost": 3,
-      "fw": 11,
-      "fl": 19,
-      "bonus": 0,
-      "points": 11
-    },
-    {
-      "name": "Craig Ferris",
-      "played": 3,
-      "won": 1,
-      "drawn": 2,
-      "lost": 0,
-      "fw": 10,
-      "fl": 8,
-      "bonus": 0,
-      "points": 10
-    },
-    {
-      "name": "Wayne Sampson",
-      "played": 3,
-      "won": 1,
-      "drawn": 1,
-      "lost": 1,
-      "fw": 9,
-      "fl": 9,
-      "bonus": 0,
-      "points": 9
-    },
-    {
-      "name": "Jamie Dixon",
-      "played": 2,
-      "won": 1,
-      "drawn": 0,
-      "lost": 1,
-      "fw": 4,
-      "fl": 8,
-      "bonus": 0,
-      "points": 4
-    },
-    {
-      "name": "Justin Housden",
-      "played": 2,
       "won": 0,
-      "drawn": 0,
+      "drawn": 2,
       "lost": 2,
-      "fw": 3,
-      "fl": 9,
+      "fw": 8,
+      "fl": 16,
       "bonus": 0,
-      "points": 3
+      "points": 8
     },
     {
-      "name": "Gary Connelly",
-      "played": 1,
-      "won": 0,
-      "drawn": 0,
-      "lost": 1,
-      "fw": 2,
-      "fl": 4,
-      "bonus": 0,
-      "points": 2
-    },
-    {
-      "name": "Dan Cuthbert",
-      "played": 1,
-      "won": 0,
-      "drawn": 0,
-      "lost": 1,
-      "fw": 2,
-      "fl": 4,
-      "bonus": 0,
-      "points": 2
-    },
-    {
-      "name": "Andy Keddo",
-      "played": 0,
-      "won": 0,
-      "drawn": 0,
+      "name": "Justin H",
+      "played": 2,
+      "won": 1,
+      "drawn": 1,
       "lost": 0,
-      "fw": 0,
-      "fl": 0,
+      "fw": 7,
+      "fl": 5,
       "bonus": 0,
-      "points": 0
+      "points": 7
+    },
+    {
+      "name": "Rory D",
+      "played": 3,
+      "won": 0,
+      "drawn": 2,
+      "lost": 1,
+      "fw": 7,
+      "fl": 11,
+      "bonus": 0,
+      "points": 7
+    }
+  ],
+  "breaks": [
+    {
+      "player": "Pete M",
+      "high": 122,
+      "total30": 5,
+      "total50": 2,
+      "total100": 2,
+      "list": [
+        122,
+        111,
+        89,
+        55,
+        37
+      ]
+    },
+    {
+      "player": "Justin H",
+      "high": 65,
+      "total30": 1,
+      "total50": 1,
+      "total100": 0,
+      "list": [
+        65
+      ]
+    },
+    {
+      "player": "Jamie D",
+      "high": 49,
+      "total30": 3,
+      "total50": 0,
+      "total100": 0,
+      "list": [
+        49,
+        44,
+        31
+      ]
+    },
+    {
+      "player": "Rory D",
+      "high": 30,
+      "total30": 1,
+      "total50": 0,
+      "total100": 0,
+      "list": [
+        30
+      ]
     }
   ],
   "fixtures": [
     {
       "id": "F1",
       "leg": 1,
-      "home": "Pete Moneypenny",
-      "away": "Jamie Dixon",
+      "date": "2026-10-19",
+      "home": "Pete M",
+      "away": "Jamie D",
       "homeScore": 6,
-      "awayScore": 0
+      "awayScore": 0,
+      "homeBreaks": "37, 89, 122",
+      "awayBreaks": "44"
     },
     {
       "id": "F2",
       "leg": 1,
-      "home": "Pete Moneypenny",
-      "away": "Rory Dawson",
-      "homeScore": 6,
-      "awayScore": 0
+      "date": "2026-10-19",
+      "home": "Pete M",
+      "away": "Rory D",
+      "homeScore": 5,
+      "awayScore": 1,
+      "homeBreaks": "111",
+      "awayBreaks": ""
     },
     {
       "id": "F3",
       "leg": 1,
-      "home": "Pete Moneypenny",
-      "away": "Gary Connelly",
+      "date": "",
+      "home": "Pete M",
+      "away": "Justin H",
       "homeScore": null,
-      "awayScore": null
+      "awayScore": null,
+      "homeBreaks": "",
+      "awayBreaks": ""
     },
     {
       "id": "F4",
       "leg": 1,
-      "home": "Pete Moneypenny",
-      "away": "Andy Keddo",
-      "homeScore": null,
-      "awayScore": null
+      "date": "2026-10-19",
+      "home": "Jamie D",
+      "away": "Rory D",
+      "homeScore": 3,
+      "awayScore": 3,
+      "homeBreaks": "31",
+      "awayBreaks": "30"
     },
     {
       "id": "F5",
       "leg": 1,
-      "home": "Pete Moneypenny",
-      "away": "Dan Cuthbert",
-      "homeScore": null,
-      "awayScore": null
+      "date": "2026-10-19",
+      "home": "Jamie D",
+      "away": "Justin H",
+      "homeScore": 2,
+      "awayScore": 4,
+      "homeBreaks": "49",
+      "awayBreaks": "65"
     },
     {
       "id": "F6",
       "leg": 1,
-      "home": "Pete Moneypenny",
-      "away": "Justin Housden",
-      "homeScore": null,
-      "awayScore": null
+      "date": "2026-10-12",
+      "home": "Rory D",
+      "away": "Justin H",
+      "homeScore": 3,
+      "awayScore": 3,
+      "homeBreaks": "",
+      "awayBreaks": ""
     },
     {
       "id": "F7",
-      "leg": 1,
-      "home": "Pete Moneypenny",
-      "away": "Craig Ferris",
-      "homeScore": null,
-      "awayScore": null
+      "leg": 2,
+      "date": "2026-10-12",
+      "home": "Jamie D",
+      "away": "Pete M",
+      "homeScore": 3,
+      "awayScore": 3,
+      "homeBreaks": "",
+      "awayBreaks": "55"
     },
     {
       "id": "F8",
-      "leg": 1,
-      "home": "Pete Moneypenny",
-      "away": "Barry Garwood",
+      "leg": 2,
+      "date": "",
+      "home": "Rory D",
+      "away": "Pete M",
       "homeScore": null,
-      "awayScore": null
+      "awayScore": null,
+      "homeBreaks": "",
+      "awayBreaks": ""
     },
     {
       "id": "F9",
-      "leg": 1,
-      "home": "Pete Moneypenny",
-      "away": "Wayne Sampson",
+      "leg": 2,
+      "date": "",
+      "home": "Justin H",
+      "away": "Pete M",
       "homeScore": null,
-      "awayScore": null
+      "awayScore": null,
+      "homeBreaks": "",
+      "awayBreaks": ""
     },
     {
       "id": "F10",
-      "leg": 1,
-      "home": "Jamie Dixon",
-      "away": "Rory Dawson",
-      "homeScore": 4,
-      "awayScore": 2
+      "leg": 2,
+      "date": "",
+      "home": "Rory D",
+      "away": "Jamie D",
+      "homeScore": null,
+      "awayScore": null,
+      "homeBreaks": "",
+      "awayBreaks": ""
     },
     {
       "id": "F11",
-      "leg": 1,
-      "home": "Jamie Dixon",
-      "away": "Gary Connelly",
+      "leg": 2,
+      "date": "",
+      "home": "Justin H",
+      "away": "Jamie D",
       "homeScore": null,
-      "awayScore": null
+      "awayScore": null,
+      "homeBreaks": "",
+      "awayBreaks": ""
     },
     {
       "id": "F12",
-      "leg": 1,
-      "home": "Jamie Dixon",
-      "away": "Andy Keddo",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F13",
-      "leg": 1,
-      "home": "Jamie Dixon",
-      "away": "Dan Cuthbert",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F14",
-      "leg": 1,
-      "home": "Jamie Dixon",
-      "away": "Justin Housden",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F15",
-      "leg": 1,
-      "home": "Jamie Dixon",
-      "away": "Craig Ferris",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F16",
-      "leg": 1,
-      "home": "Jamie Dixon",
-      "away": "Barry Garwood",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F17",
-      "leg": 1,
-      "home": "Jamie Dixon",
-      "away": "Wayne Sampson",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F18",
-      "leg": 1,
-      "home": "Rory Dawson",
-      "away": "Gary Connelly",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F19",
-      "leg": 1,
-      "home": "Rory Dawson",
-      "away": "Andy Keddo",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F20",
-      "leg": 1,
-      "home": "Rory Dawson",
-      "away": "Dan Cuthbert",
-      "homeScore": 4,
-      "awayScore": 2
-    },
-    {
-      "id": "F21",
-      "leg": 1,
-      "home": "Rory Dawson",
-      "away": "Justin Housden",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F22",
-      "leg": 1,
-      "home": "Rory Dawson",
-      "away": "Craig Ferris",
-      "homeScore": 3,
-      "awayScore": 3
-    },
-    {
-      "id": "F23",
-      "leg": 1,
-      "home": "Rory Dawson",
-      "away": "Barry Garwood",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F24",
-      "leg": 1,
-      "home": "Rory Dawson",
-      "away": "Wayne Sampson",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F25",
-      "leg": 1,
-      "home": "Gary Connelly",
-      "away": "Andy Keddo",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F26",
-      "leg": 1,
-      "home": "Gary Connelly",
-      "away": "Dan Cuthbert",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F27",
-      "leg": 1,
-      "home": "Gary Connelly",
-      "away": "Justin Housden",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F28",
-      "leg": 1,
-      "home": "Gary Connelly",
-      "away": "Craig Ferris",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F29",
-      "leg": 1,
-      "home": "Gary Connelly",
-      "away": "Barry Garwood",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F30",
-      "leg": 1,
-      "home": "Gary Connelly",
-      "away": "Wayne Sampson",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F31",
-      "leg": 1,
-      "home": "Andy Keddo",
-      "away": "Dan Cuthbert",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F32",
-      "leg": 1,
-      "home": "Andy Keddo",
-      "away": "Justin Housden",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F33",
-      "leg": 1,
-      "home": "Andy Keddo",
-      "away": "Craig Ferris",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F34",
-      "leg": 1,
-      "home": "Andy Keddo",
-      "away": "Barry Garwood",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F35",
-      "leg": 1,
-      "home": "Andy Keddo",
-      "away": "Wayne Sampson",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F36",
-      "leg": 1,
-      "home": "Dan Cuthbert",
-      "away": "Justin Housden",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F37",
-      "leg": 1,
-      "home": "Dan Cuthbert",
-      "away": "Craig Ferris",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F38",
-      "leg": 1,
-      "home": "Dan Cuthbert",
-      "away": "Barry Garwood",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F39",
-      "leg": 1,
-      "home": "Dan Cuthbert",
-      "away": "Wayne Sampson",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F40",
-      "leg": 1,
-      "home": "Justin Housden",
-      "away": "Craig Ferris",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F41",
-      "leg": 1,
-      "home": "Justin Housden",
-      "away": "Barry Garwood",
-      "homeScore": 1,
-      "awayScore": 5
-    },
-    {
-      "id": "F42",
-      "leg": 1,
-      "home": "Justin Housden",
-      "away": "Wayne Sampson",
-      "homeScore": 2,
-      "awayScore": 4
-    },
-    {
-      "id": "F43",
-      "leg": 1,
-      "home": "Craig Ferris",
-      "away": "Barry Garwood",
-      "homeScore": 3,
-      "awayScore": 3
-    },
-    {
-      "id": "F44",
-      "leg": 1,
-      "home": "Craig Ferris",
-      "away": "Wayne Sampson",
-      "homeScore": 4,
-      "awayScore": 2
-    },
-    {
-      "id": "F45",
-      "leg": 1,
-      "home": "Barry Garwood",
-      "away": "Wayne Sampson",
-      "homeScore": 3,
-      "awayScore": 3
-    },
-    {
-      "id": "F46",
       "leg": 2,
-      "home": "Jamie Dixon",
-      "away": "Pete Moneypenny",
+      "date": "",
+      "home": "Justin H",
+      "away": "Rory D",
       "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F47",
-      "leg": 2,
-      "home": "Rory Dawson",
-      "away": "Pete Moneypenny",
-      "homeScore": 2,
-      "awayScore": 4
-    },
-    {
-      "id": "F48",
-      "leg": 2,
-      "home": "Gary Connelly",
-      "away": "Pete Moneypenny",
-      "homeScore": 2,
-      "awayScore": 4
-    },
-    {
-      "id": "F49",
-      "leg": 2,
-      "home": "Andy Keddo",
-      "away": "Pete Moneypenny",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F50",
-      "leg": 2,
-      "home": "Dan Cuthbert",
-      "away": "Pete Moneypenny",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F51",
-      "leg": 2,
-      "home": "Justin Housden",
-      "away": "Pete Moneypenny",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F52",
-      "leg": 2,
-      "home": "Craig Ferris",
-      "away": "Pete Moneypenny",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F53",
-      "leg": 2,
-      "home": "Barry Garwood",
-      "away": "Pete Moneypenny",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F54",
-      "leg": 2,
-      "home": "Wayne Sampson",
-      "away": "Pete Moneypenny",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F55",
-      "leg": 2,
-      "home": "Rory Dawson",
-      "away": "Jamie Dixon",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F56",
-      "leg": 2,
-      "home": "Gary Connelly",
-      "away": "Jamie Dixon",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F57",
-      "leg": 2,
-      "home": "Andy Keddo",
-      "away": "Jamie Dixon",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F58",
-      "leg": 2,
-      "home": "Dan Cuthbert",
-      "away": "Jamie Dixon",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F59",
-      "leg": 2,
-      "home": "Justin Housden",
-      "away": "Jamie Dixon",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F60",
-      "leg": 2,
-      "home": "Craig Ferris",
-      "away": "Jamie Dixon",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F61",
-      "leg": 2,
-      "home": "Barry Garwood",
-      "away": "Jamie Dixon",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F62",
-      "leg": 2,
-      "home": "Wayne Sampson",
-      "away": "Jamie Dixon",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F63",
-      "leg": 2,
-      "home": "Gary Connelly",
-      "away": "Rory Dawson",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F64",
-      "leg": 2,
-      "home": "Andy Keddo",
-      "away": "Rory Dawson",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F65",
-      "leg": 2,
-      "home": "Dan Cuthbert",
-      "away": "Rory Dawson",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F66",
-      "leg": 2,
-      "home": "Justin Housden",
-      "away": "Rory Dawson",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F67",
-      "leg": 2,
-      "home": "Craig Ferris",
-      "away": "Rory Dawson",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F68",
-      "leg": 2,
-      "home": "Barry Garwood",
-      "away": "Rory Dawson",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F69",
-      "leg": 2,
-      "home": "Wayne Sampson",
-      "away": "Rory Dawson",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F70",
-      "leg": 2,
-      "home": "Andy Keddo",
-      "away": "Gary Connelly",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F71",
-      "leg": 2,
-      "home": "Dan Cuthbert",
-      "away": "Gary Connelly",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F72",
-      "leg": 2,
-      "home": "Justin Housden",
-      "away": "Gary Connelly",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F73",
-      "leg": 2,
-      "home": "Craig Ferris",
-      "away": "Gary Connelly",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F74",
-      "leg": 2,
-      "home": "Barry Garwood",
-      "away": "Gary Connelly",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F75",
-      "leg": 2,
-      "home": "Wayne Sampson",
-      "away": "Gary Connelly",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F76",
-      "leg": 2,
-      "home": "Dan Cuthbert",
-      "away": "Andy Keddo",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F77",
-      "leg": 2,
-      "home": "Justin Housden",
-      "away": "Andy Keddo",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F78",
-      "leg": 2,
-      "home": "Craig Ferris",
-      "away": "Andy Keddo",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F79",
-      "leg": 2,
-      "home": "Barry Garwood",
-      "away": "Andy Keddo",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F80",
-      "leg": 2,
-      "home": "Wayne Sampson",
-      "away": "Andy Keddo",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F81",
-      "leg": 2,
-      "home": "Justin Housden",
-      "away": "Dan Cuthbert",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F82",
-      "leg": 2,
-      "home": "Craig Ferris",
-      "away": "Dan Cuthbert",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F83",
-      "leg": 2,
-      "home": "Barry Garwood",
-      "away": "Dan Cuthbert",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F84",
-      "leg": 2,
-      "home": "Wayne Sampson",
-      "away": "Dan Cuthbert",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F85",
-      "leg": 2,
-      "home": "Craig Ferris",
-      "away": "Justin Housden",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F86",
-      "leg": 2,
-      "home": "Barry Garwood",
-      "away": "Justin Housden",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F87",
-      "leg": 2,
-      "home": "Wayne Sampson",
-      "away": "Justin Housden",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F88",
-      "leg": 2,
-      "home": "Barry Garwood",
-      "away": "Craig Ferris",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F89",
-      "leg": 2,
-      "home": "Wayne Sampson",
-      "away": "Craig Ferris",
-      "homeScore": null,
-      "awayScore": null
-    },
-    {
-      "id": "F90",
-      "leg": 2,
-      "home": "Wayne Sampson",
-      "away": "Barry Garwood",
-      "homeScore": null,
-      "awayScore": null
+      "awayScore": null,
+      "homeBreaks": "",
+      "awayBreaks": ""
     }
   ]
 }
