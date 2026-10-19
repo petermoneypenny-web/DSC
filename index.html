@@ -1,327 +1,1173 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Snooker League Standings &amp; Results</title>
+  <title>Engineering Efficiency Hub</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.ico">
   <style>
     :root {
       --bg-main: #0f172a;
-      --card-bg: #1e293b;
-      --card-inner: #0b1120;
+      --bg-sidebar: #1e293b;
+      --bg-card: #1e293b;
       --border-color: #334155;
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
       --primary: #38bdf8;
+      --primary-hover: #0284c7;
       --success: #22c55e;
       --danger: #ef4444;
       --warning: #f59e0b;
+      --card-inner: #0b1120;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-    body { background-color: var(--bg-main); color: var(--text-main); padding: 32px 16px; display: flex; justify-content: center; min-height: 100vh; }
-    .container { width: 100%; max-width: 960px; display: flex; flex-direction: column; gap: 28px; }
-    
-    header { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 10px; border-bottom: 1px solid var(--border-color); padding-bottom: 18px; }
-    h1 { font-size: 1.6rem; color: var(--text-main); font-weight: 800; letter-spacing: -0.5px; }
-    .subtitle { font-size: 0.85rem; color: var(--text-muted); margin-top: 4px; }
-    
-    .section-title { font-size: 0.9rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; }
-    
-    .card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 10px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.25); }
-    .table-responsive { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; min-width: 620px; }
-    th, td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--border-color); }
-    th { background: var(--card-inner); color: var(--text-muted); font-size: 0.74rem; text-transform: uppercase; font-weight: 700; }
-    tr:last-child td { border-bottom: none; }
-    tr:hover { background: rgba(255, 255, 255, 0.02); }
-    
-    .pts { font-weight: 800; color: var(--primary); font-size: 1.05rem; }
-    .pill { display: inline-block; padding: 2px 7px; border-radius: 4px; font-size: 0.75rem; font-weight: 700; background: rgba(255, 255, 255, 0.06); }
-    .clean-sweep { background: rgba(34, 197, 94, 0.15); color: var(--success); border: 1px solid var(--success); }
 
-    /* Results Grouped Styling */
-    .date-group { margin-bottom: 20px; }
-    .date-heading { font-size: 0.82rem; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: 0.5px; padding: 8px 14px; background: rgba(56, 189, 248, 0.08); border-left: 3px solid var(--primary); margin-bottom: 8px; border-radius: 0 4px 4px 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+    body { background-color: var(--bg-main); color: var(--text-main); display: flex; height: 100vh; overflow: hidden; }
+
+    .sidebar { width: 270px; background-color: var(--bg-sidebar); border-right: 1px solid var(--border-color); display: flex; flex-direction: column; flex-shrink: 0; }
+    .brand { padding: 22px 20px; font-size: 1.1rem; font-weight: 700; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--border-color); color: var(--primary); }
+    .sidebar-nav { list-style: none; padding: 16px 12px; display: flex; flex-direction: column; gap: 6px; flex-grow: 1; }
+    .nav-btn { width: 100%; text-align: left; padding: 12px 14px; border-radius: 8px; border: none; background: transparent; color: var(--text-muted); cursor: pointer; font-size: 0.95rem; font-weight: 500; display: flex; align-items: center; gap: 12px; transition: all 0.2s ease; white-space: nowrap; }
+    .nav-btn:hover { background-color: rgba(255, 255, 255, 0.05); color: var(--text-main); }
+    .nav-btn.active { background-color: var(--primary); color: #0f172a; font-weight: 600; }
+
+    .content-area { flex-grow: 1; overflow-y: auto; padding: 36px; display: flex; flex-direction: column; align-items: center; width: 100%; }
+    .tool-pane { width: 100%; max-width: 980px; display: none; }
+    .tool-pane.active { display: block; animation: fadeIn 0.15s ease-in-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+    .card { background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 28px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.25); }
+    .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 10px; }
+    .card h2 { font-size: 1.35rem; }
+    .card p.desc { color: var(--text-muted); margin-bottom: 24px; font-size: 0.92rem; line-height: 1.45; }
+
+    .dropzone-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 24px; }
+    .drop-box { border: 2px dashed var(--border-color); border-radius: 8px; padding: 24px; text-align: center; background: rgba(15, 23, 42, 0.5); cursor: pointer; transition: border-color 0.2s; }
+    .drop-box:hover { border-color: var(--primary); }
+    .drop-box input[type="file"] { display: none; }
+    .drop-box label { cursor: pointer; display: flex; flex-direction: column; gap: 8px; font-size: 0.9rem; }
+    .file-name { font-weight: 600; color: var(--primary); margin-top: 6px; font-size: 0.85rem; word-break: break-all; }
+
+    .action-btn { width: 100%; padding: 13px; background-color: var(--primary); border: none; border-radius: 8px; color: #0f172a; font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: background-color 0.2s; }
+    .action-btn:hover { background-color: var(--primary-hover); }
+    .action-btn:disabled { background-color: var(--border-color); color: var(--text-muted); cursor: not-allowed; }
+
+    .btn-secondary { background: var(--card-inner); border: 1px solid var(--border-color); color: var(--text-main); padding: 8px 14px; border-radius: 6px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+    .btn-secondary:hover { border-color: var(--primary); color: var(--primary); }
+    .btn-danger { background: rgba(239, 68, 68, 0.15); border: 1px solid var(--danger); color: var(--danger); padding: 6px 10px; border-radius: 6px; font-size: 0.78rem; cursor: pointer; }
+    .btn-danger:hover { background: var(--danger); color: #fff; }
+
+    .status-msg { margin-top: 16px; padding: 12px; border-radius: 6px; font-size: 0.9rem; display: none; }
+    .status-msg.error { display: block; background-color: rgba(239, 68, 68, 0.15); border: 1px solid var(--danger); color: var(--danger); }
+    .status-msg.success { display: block; background-color: rgba(34, 197, 94, 0.15); border: 1px solid var(--success); color: var(--success); }
+    .status-msg.info { display: block; background-color: rgba(56, 189, 248, 0.15); border: 1px solid var(--primary); color: var(--primary); }
+
+    .status-badge { display: inline-flex; align-items: center; gap: 8px; padding: 5px 12px; border-radius: 9999px; font-weight: 600; font-size: 0.8rem; background-color: rgba(34, 197, 94, 0.15); color: var(--success); border: 1px solid var(--success); }
+    .status-badge.offline { background-color: rgba(239, 68, 68, 0.15); color: var(--danger); border-color: var(--danger); }
+    .status-dot { width: 7px; height: 7px; border-radius: 50%; background-color: currentColor; }
+
+    .metric-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
+    .metric-card { background: var(--card-inner); border: 1px solid var(--border-color); border-radius: 8px; padding: 14px; display: flex; flex-direction: column; gap: 4px; }
+    .metric-label { color: var(--text-muted); font-size: 0.72rem; font-weight: 600; text-transform: uppercase; }
+    .metric-value { font-size: 1.45rem; font-weight: 700; color: var(--primary); }
+    .metric-sub { font-size: 0.72rem; color: var(--text-muted); }
+
+    .chart-box { background: var(--card-inner); border: 1px solid var(--border-color); border-radius: 8px; padding: 16px; margin-bottom: 20px; }
+    .chart-header { display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; flex-wrap: wrap; gap: 6px; }
+    canvas { width: 100%; height: 180px; display: block; }
+
+    .section-title { font-size: 0.85rem; font-weight: 600; margin-bottom: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px; }
+    .log-container { background: var(--card-inner); border: 1px solid var(--border-color); border-radius: 8px; padding: 12px 14px; height: 170px; overflow-y: auto; font-family: "Courier New", Courier, monospace; font-size: 0.82rem; display: flex; flex-direction: column; gap: 6px; margin-top: 10px; }
+    .log-entry { display: flex; gap: 12px; line-height: 1.4; word-break: break-word; }
+    .log-time { color: var(--text-muted); flex-shrink: 0; }
+    .log-badge { font-weight: bold; flex-shrink: 0; width: 80px; }
+    .log-badge.outage { color: var(--danger); }
+    .log-badge.restored { color: var(--success); }
+    .log-badge.info { color: var(--primary); }
+    .log-text { color: var(--text-main); word-break: break-word; }
+    .clear-btn { background: transparent; border: 1px solid var(--border-color); color: var(--text-muted); padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 0.75rem; transition: all 0.2s; white-space: nowrap; }
+    .clear-btn:hover { color: var(--text-main); border-color: var(--primary); }
+
+    .table-responsive { width: 100%; overflow-x: auto; margin-top: 14px; -webkit-overflow-scrolling: touch; border-radius: 8px; border: 1px solid var(--border-color); }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; min-width: 600px; }
+    .data-table th, .data-table td { border: 1px solid var(--border-color); padding: 10px 12px; text-align: left; }
+    .data-table th { background: var(--card-inner); color: var(--text-muted); font-weight: 600; font-size: 0.78rem; text-transform: uppercase; }
+    .data-table tr:hover { background: rgba(255, 255, 255, 0.02); }
+
+    .custom-select, .custom-input {
+      background: var(--bg-main);
+      color: var(--text-main);
+      border: 1px solid var(--border-color);
+      padding: 7px 10px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+    }
+
+    /* Snooker League Specific Styles */
+    .snooker-tabs { display: flex; gap: 8px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; margin-bottom: 20px; overflow-x: auto; }
+    .tab-btn { background: transparent; border: 1px solid var(--border-color); color: var(--text-muted); padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 0.85rem; font-weight: 600; transition: all 0.2s; white-space: nowrap; }
+    .tab-btn:hover { color: var(--text-main); border-color: var(--primary); }
+    .tab-btn.active { background: var(--primary); color: #0f172a; border-color: var(--primary); }
     
-    .match-item { background: var(--card-inner); border: 1px solid var(--border-color); border-radius: 8px; padding: 14px 16px; margin-bottom: 10px; display: flex; flex-direction: column; gap: 8px; }
-    .match-main { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
-    .match-teams { font-weight: 600; font-size: 0.95rem; display: flex; align-items: center; gap: 10px; }
-    .match-score { font-size: 1.1rem; font-weight: 800; letter-spacing: 1px; color: var(--text-main); }
-    .match-breaks-detail { font-size: 0.8rem; color: var(--text-muted); padding-top: 8px; border-top: 1px solid rgba(255, 255, 255, 0.04); display: flex; flex-direction: column; gap: 4px; }
+    .snooker-subpage { display: none; }
+    .snooker-subpage.active { display: block; }
 
-    .break-chip { display: inline-block; padding: 2px 6px; border-radius: 4px; font-weight: 700; font-size: 0.72rem; margin-right: 4px; }
-    .chip-30 { background: rgba(255, 255, 255, 0.06); color: var(--text-main); border: 1px solid var(--border-color); }
-    .chip-50 { background: rgba(56, 189, 248, 0.15); color: var(--primary); border: 1px solid var(--primary); }
-    .chip-100 { background: rgba(239, 68, 68, 0.2); color: var(--danger); border: 1px solid var(--danger); }
+    .player-list { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-top: 14px; }
+    .player-item { background: var(--card-inner); border: 1px solid var(--border-color); border-radius: 6px; padding: 10px 14px; display: flex; justify-content: space-between; align-items: center; }
 
-    .upcoming-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
-    .upcoming-card { background: var(--card-inner); border: 1px dashed var(--border-color); border-radius: 8px; padding: 14px; display: flex; justify-content: space-between; align-items: center; }
+    .fixture-card { background: var(--card-inner); border: 1px solid var(--border-color); border-radius: 8px; padding: 16px; margin-bottom: 14px; display: flex; flex-direction: column; gap: 10px; }
+    .fixture-top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+    .fixture-teams { font-weight: 600; font-size: 0.95rem; display: flex; align-items: center; gap: 12px; }
+    .score-inputs { display: flex; align-items: center; gap: 8px; }
+    .score-num { width: 44px; text-align: center; padding: 6px 4px; font-weight: bold; }
+    .bonus-pill { background: rgba(34, 197, 94, 0.15); color: var(--success); border: 1px solid var(--success); font-size: 0.72rem; padding: 2px 6px; border-radius: 4px; font-weight: bold; }
+
+    .breaks-input-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding-top: 10px; border-top: 1px solid rgba(255, 255, 255, 0.05); }
+    .break-field-label { font-size: 0.75rem; color: var(--text-muted); font-weight: 600; margin-bottom: 4px; display: block; }
+
+    .backup-card { background: var(--card-inner); border: 1px solid var(--border-color); border-radius: 8px; padding: 12px 16px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; flex-wrap: wrap; gap: 8px; }
+
+    @media (max-width: 768px) {
+      body { flex-direction: column; height: 100vh; overflow: hidden; }
+      .sidebar { width: 100%; border-right: none; border-bottom: 1px solid var(--border-color); }
+      .brand { padding: 12px 16px; font-size: 1rem; }
+      .sidebar-nav { flex-direction: row; overflow-x: auto; padding: 8px 12px; gap: 8px; white-space: nowrap; -webkit-overflow-scrolling: touch; }
+      .nav-btn { padding: 8px 12px; font-size: 0.85rem; }
+      .content-area { padding: 14px 10px; overflow-y: auto; flex-grow: 1; }
+      .card { padding: 16px 14px; border-radius: 10px; }
+      .dropzone-grid { grid-template-columns: 1fr; gap: 12px; }
+      .metric-grid { grid-template-columns: 1fr 1fr; }
+      .fixture-top { flex-direction: column; align-items: flex-start; }
+      .score-inputs { width: 100%; justify-content: flex-end; }
+      .breaks-input-row { grid-template-columns: 1fr; gap: 8px; }
+    }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <header>
-      <div>
-        <h1>Snooker League</h1>
-        <div class="subtitle">6 frames/match &bull; 1 pt/frame won &bull; +2 bonus for 6-0 clean sweep</div>
-      </div>
-      <div id="updatedTime" class="subtitle">Syncing live standings...</div>
-    </header>
+  <aside class="sidebar">
+    <div class="brand">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+      </svg>
+      Efficiency Hub
+    </div>
+    <ul class="sidebar-nav">
+      <li><button class="nav-btn active" onclick="switchTool('tool-migrator', this)">Word Template Migrator</button></li>
+      <li><button class="nav-btn" onclick="switchTool('tool-monitor', this)">Live Connection Monitor</button></li>
+      <li><button class="nav-btn" onclick="switchTool('tool-snooker', this)">Snooker League</button></li>
+    </ul>
+  </aside>
 
-    <!-- 1. Main League Standings Table -->
-    <section>
-      <div class="section-title">League Table</div>
+  <main class="content-area">
+
+    <!-- Tool 1: Word Migrator -->
+    <section id="tool-migrator" class="tool-pane active">
       <div class="card">
-        <div class="table-responsive">
-          <table>
-            <thead>
-              <tr>
-                <th style="width: 40px;">Pos</th>
-                <th>Player</th>
-                <th>P</th>
-                <th>W</th>
-                <th>D</th>
-                <th>L</th>
-                <th>FW</th>
-                <th>FL</th>
-                <th>+/-</th>
-                <th>BP</th>
-                <th style="color: var(--primary);">Pts</th>
-              </tr>
-            </thead>
-            <tbody id="standingsBody">
-              <tr><td colspan="11" style="text-align:center; color:var(--text-muted);">Loading standings...</td></tr>
-            </tbody>
-          </table>
-        </div>
+        <h2>Word Template Migrator</h2>
+        <p class="desc">Upload an outdated document alongside a target Word template.</p>
+        <form id="migratorForm">
+          <div class="dropzone-grid">
+            <div class="drop-box" onclick="document.getElementById('legacy_file').click()">
+              <label><strong>1. Legacy Document</strong><span id="legacy_name" class="file-name"></span></label>
+              <input type="file" id="legacy_file" accept=".docx" required onchange="showFilename(this, 'legacy_name')">
+            </div>
+            <div class="drop-box" onclick="document.getElementById('template_file').click()">
+              <label><strong>2. Target Template</strong><span id="template_name" class="file-name"></span></label>
+              <input type="file" id="template_file" accept=".docx" required onchange="showFilename(this, 'template_name')">
+            </div>
+          </div>
+          <button type="submit" id="submitBtn" class="action-btn">Migrate Document</button>
+        </form>
+        <div id="statusMessage" class="status-msg"></div>
       </div>
     </section>
 
-    <!-- 2. Breaks Leaderboard (Under Main Table) -->
-    <section>
-      <div class="section-title">Breaks (30+) Leaderboard</div>
+    <!-- Tool 2: Connection Monitor -->
+    <section id="tool-monitor" class="tool-pane">
       <div class="card">
-        <div class="table-responsive">
-          <table>
-            <thead>
-              <tr>
-                <th style="width: 40px;">Pos</th>
-                <th>Player</th>
-                <th>High Break</th>
-                <th>Total 30+</th>
-                <th>50+</th>
-                <th>100+</th>
-                <th>All Breaks</th>
-              </tr>
-            </thead>
-            <tbody id="breaksBody">
-              <tr><td colspan="7" style="text-align:center; color:var(--text-muted);">Loading breaks...</td></tr>
-            </tbody>
-          </table>
+        <div class="card-header">
+          <div>
+            <h2>Continuous Connection Monitor</h2>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 4px;">Concurrent TCP socket probing (1s interval)</p>
+          </div>
+          <div id="statusBadge" class="status-badge"><span class="status-dot"></span><span id="statusText">CONNECTING...</span></div>
         </div>
+        <div class="metric-grid">
+          <div class="metric-card"><span class="metric-label">Avg Latency</span><span id="latencyVal" class="metric-value">-- ms</span><span class="metric-sub">Rolling 60s sample</span></div>
+          <div class="metric-card"><span class="metric-label">Jitter</span><span id="jitterVal" class="metric-value">-- ms</span><span class="metric-sub">Mean variation</span></div>
+          <div class="metric-card"><span class="metric-label">Packet Loss</span><span id="lossVal" class="metric-value">0%</span><span id="dropsSub" class="metric-sub">0 dropped probe cycles</span></div>
+          <div class="metric-card"><span class="metric-label">Total Checks</span><span id="totalVal" class="metric-value">0</span><span id="lastTime" class="metric-sub">Awaiting data...</span></div>
+        </div>
+        <div class="chart-box">
+          <div class="chart-header"><span>Latency History (Last 60 Seconds)</span><span style="color: var(--text-muted); font-size: 0.8rem;">Scale: 0 - 120 ms</span></div>
+          <canvas id="latencyChart" width="800" height="180"></canvas>
+        </div>
+        <div class="section-title">Endpoint Probes</div>
+        <div id="targetsContainer"></div>
+        <div class="section-title" style="margin-top: 20px;">
+          <span>Outage &amp; Incident Log</span>
+          <button class="clear-btn" onclick="clearLocalLogs()">Clear Window</button>
+        </div>
+        <div id="logContainer" class="log-container"></div>
       </div>
     </section>
 
-    <!-- 3. Results Grouped by Date -->
-    <section>
-      <div class="section-title">Match Results (Grouped by Date)</div>
-      <div id="resultsContainer">
-        <div style="color:var(--text-muted); font-size:0.85rem;">Loading match results...</div>
+    <!-- Tool 3: Snooker League -->
+    <section id="tool-snooker" class="tool-pane">
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <h2>Snooker League Manager</h2>
+            <p class="desc" style="margin-bottom: 0;">6 frames per match &bull; 1 pt per frame won &bull; +2 bonus points for a 6-0 clean sweep.</p>
+          </div>
+        </div>
+
+        <!-- Subpage Navigation Tabs -->
+        <div class="snooker-tabs">
+          <button class="tab-btn active" onclick="switchSnookerTab('tab-standings', this)">League Table</button>
+          <button class="tab-btn" onclick="switchSnookerTab('tab-breaks', this)">Breaks (30+)</button>
+          <button class="tab-btn" onclick="switchSnookerTab('tab-fixtures', this)">Fixtures &amp; Results</button>
+          <button class="tab-btn" onclick="switchSnookerTab('tab-setup', this)">League Setup &amp; Players</button>
+          <button class="tab-btn" onclick="switchSnookerTab('tab-publish', this)">GitHub &amp; Backups</button>
+        </div>
+
+        <!-- Subpage 1: League Table -->
+        <div id="tab-standings" class="snooker-subpage active">
+          <div class="section-title">
+            <span>Current Standings</span>
+            <div style="display: flex; gap: 8px;">
+              <button class="btn-secondary" style="padding: 5px 12px; font-size: 0.8rem;" onclick="publishToGithub()">Publish to GitHub Now</button>
+            </div>
+          </div>
+          <div id="quickPublishStatus" class="status-msg" style="margin-bottom: 14px;"></div>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th style="width: 40px;">Pos</th>
+                  <th>Player</th>
+                  <th>P</th>
+                  <th>W</th>
+                  <th>D</th>
+                  <th>L</th>
+                  <th>FW</th>
+                  <th>FL</th>
+                  <th>+/-</th>
+                  <th>BP</th>
+                  <th style="color: var(--primary);">Pts</th>
+                </tr>
+              </thead>
+              <tbody id="standingsTableBody">
+                <tr><td colspan="11" style="text-align: center; color: var(--text-muted);">No league data available. Add players and generate fixtures in setup.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Subpage 2: Breaks (30+) -->
+        <div id="tab-breaks" class="snooker-subpage">
+          <div class="section-title">Breaks Leaderboard (30+)</div>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th style="width: 40px;">Pos</th>
+                  <th>Player</th>
+                  <th>High Break</th>
+                  <th>Total 30+</th>
+                  <th>50+</th>
+                  <th>100+</th>
+                  <th>All Breaks</th>
+                </tr>
+              </thead>
+              <tbody id="breaksLeaderboardBody">
+                <tr><td colspan="7" style="text-align: center; color: var(--text-muted);">No breaks recorded yet.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Subpage 3: Fixtures & Results -->
+        <div id="tab-fixtures" class="snooker-subpage">
+          <div class="section-title">
+            <span>Match Schedule &amp; Results</span>
+            <span style="font-size: 0.78rem; color: var(--text-muted); font-weight: normal;">(Total of 6 frames per game &bull; Separate multiple breaks with commas e.g. 37,89,56)</span>
+          </div>
+          <div id="fixturesContainer">
+            <p style="color: var(--text-muted); font-size: 0.88rem;">No fixtures scheduled yet. Visit League Setup to generate the schedule.</p>
+          </div>
+        </div>
+
+        <!-- Subpage 4: League Setup & Players -->
+        <div id="tab-setup" class="snooker-subpage">
+          <div class="section-title">Add / Edit Players</div>
+          <div style="display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap;">
+            <input type="text" id="newPlayerName" class="custom-input" placeholder="Player Name..." style="flex-grow: 1; min-width: 200px;">
+            <button class="btn-secondary" onclick="addPlayer()">Add Player</button>
+          </div>
+
+          <ul id="playersList" class="player-list"></ul>
+
+          <div class="section-title" style="margin-top: 30px;">Generate Double Round-Robin Schedule</div>
+          <div style="background: var(--card-inner); border: 1px solid var(--border-color); border-radius: 8px; padding: 16px; margin-top: 10px;">
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 14px;">
+              Generating a new schedule creates home and away fixtures so every player faces each opponent twice.
+              <br><strong style="color: var(--warning);">Note:</strong> Generating a new schedule resets any existing match scores and breaks.
+            </p>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+              <button class="action-btn" style="width: auto; padding: 10px 18px;" onclick="generateFixtures()">Generate Fixtures</button>
+              <button class="btn-danger" onclick="resetAllLeagueData()">Reset Everything</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Subpage 5: GitHub Publisher & Backups Settings -->
+        <div id="tab-publish" class="snooker-subpage">
+          <div class="section-title">GitHub Pages &amp; Automatic Backup Settings</div>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px;">
+            Target Site: <strong style="color: var(--primary);">https://petermoneypenny-web.github.io/DSC/</strong><br>
+            Every upload commits <code>standings.json</code> and archives a backup into <code>backups/</code> (keeping the last 5 uploads).
+          </p>
+
+          <div style="display: flex; flex-direction: column; gap: 12px; max-width: 540px;">
+            <div>
+              <label style="display:block; font-size:0.75rem; color:var(--text-muted); font-weight:700; margin-bottom:4px;">GITHUB OWNER / USERNAME:</label>
+              <input type="text" id="ghOwner" class="custom-input" value="petermoneypenny-web" style="width: 100%;">
+            </div>
+            <div>
+              <label style="display:block; font-size:0.75rem; color:var(--text-muted); font-weight:700; margin-bottom:4px;">REPOSITORY NAME:</label>
+              <input type="text" id="ghRepo" class="custom-input" value="DSC" style="width: 100%;">
+            </div>
+            <div>
+              <label style="display:block; font-size:0.75rem; color:var(--text-muted); font-weight:700; margin-bottom:4px;">TARGET BRANCH:</label>
+              <input type="text" id="ghBranch" class="custom-input" value="main" style="width: 100%;">
+            </div>
+            <div>
+              <label style="display:block; font-size:0.75rem; color:var(--text-muted); font-weight:700; margin-bottom:4px;">TARGET FILE PATH:</label>
+              <input type="text" id="ghPath" class="custom-input" value="standings.json" style="width: 100%;">
+            </div>
+            <div>
+              <label style="display:block; font-size:0.75rem; color:var(--text-muted); font-weight:700; margin-bottom:4px;">PERSONAL ACCESS TOKEN (PAT):</label>
+              <input type="password" id="ghToken" class="custom-input" placeholder="ghp_..." style="width: 100%;">
+              <span style="font-size: 0.72rem; color: var(--text-muted); margin-top: 4px; display: block;">Requires <code>repo</code> write permission. Stored securely in your browser's localStorage.</span>
+            </div>
+
+            <div style="display: flex; gap: 10px; margin-top: 10px;">
+              <button class="btn-secondary" onclick="saveGithubConfig()">Save Settings</button>
+              <button class="action-btn" id="btnPublishAction" style="width: auto; padding: 8px 20px;" onclick="publishToGithub()">Publish Now (With Backup)</button>
+            </div>
+            <div id="publishStatus" class="status-msg"></div>
+
+            <!-- Restore from GitHub Backups Section -->
+            <div class="section-title" style="margin-top: 26px;">
+              <span>Restore from GitHub Backups (Last 5)</span>
+              <button class="btn-secondary" style="padding: 4px 10px; font-size: 0.75rem;" onclick="fetchGithubBackups()">Refresh Backups</button>
+            </div>
+            <div id="backupsContainer">
+              <p style="color: var(--text-muted); font-size: 0.85rem;">Click "Refresh Backups" to load saved snapshots from GitHub.</p>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
 
-    <!-- 4. Outstanding Fixtures -->
-    <section>
-      <div class="section-title">Outstanding Fixtures</div>
-      <div id="upcomingContainer" class="upcoming-grid">
-        <div style="color:var(--text-muted); font-size:0.85rem;">Loading upcoming fixtures...</div>
-      </div>
-    </section>
-  </div>
+  </main>
 
   <script>
-    function renderBreakChip(val) {
-      let cls = 'chip-30';
-      if (val >= 100) cls = 'chip-100';
-      else if (val >= 50) cls = 'chip-50';
-      return `<span class="break-chip ${cls}">${val}</span>`;
-    }
+    function switchTool(toolId, btn) {
+      document.querySelectorAll('.tool-pane').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
+      document.getElementById(toolId).classList.add('active');
+      btn.classList.add('active');
 
-    function formatDisplayDate(dateStr) {
-      if (!dateStr) return 'Completed Matches';
-      const parts = dateStr.split('-');
-      if (parts.length === 3) {
-        const d = new Date(parts[0], parts[1] - 1, parts[2]);
-        return d.toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+      if (toolId === 'tool-monitor') {
+        drawChart();
+      } else if (toolId === 'tool-snooker') {
+        renderAllSnooker();
       }
-      return dateStr;
     }
 
-    async function loadData() {
+    function showFilename(input, spanId) {
+      if (input.files && input.files[0]) {
+        document.getElementById(spanId).textContent = input.files[0].name;
+      }
+    }
+
+    // --- Tool 1: Form Handling ---
+    const migratorForm = document.getElementById('migratorForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const statusMsg = document.getElementById('statusMessage');
+
+    migratorForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      statusMsg.className = 'status-msg';
+      statusMsg.style.display = 'none';
+
+      const legacyInput = document.getElementById('legacy_file');
+      const templateInput = document.getElementById('template_file');
+      if (!legacyInput.files[0] || !templateInput.files[0]) return;
+
+      const formData = new FormData();
+      formData.append('legacy_file', legacyInput.files[0]);
+      formData.append('template_file', templateInput.files[0]);
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Processing document...';
+
       try {
-        const res = await fetch('standings.json?t=' + new Date().getTime(), {
-  cache: 'no-store'
-});
-        if (!res.ok) throw new Error('standings.json could not be loaded');
-        const data = await res.json();
+        const response = await fetch('/api/tools/migrate-doc', { method: 'POST', body: formData });
+        if (!response.ok) throw new Error('Migration failed.');
 
-        // Updated Timestamp
-        if (data.updatedAt) {
-          const d = new Date(data.updatedAt);
-          document.getElementById('updatedTime').textContent = 'Last updated: ' + d.toLocaleDateString() + ' ' + d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-        }
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `migrated_${legacyInput.files[0].name}`;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        window.URL.revokeObjectURL(url);
 
-        // 1. Render Standings Table
-        const sBody = document.getElementById('standingsBody');
-        sBody.innerHTML = '';
-        (data.standings || []).forEach((p, idx) => {
-          const diff = p.fw - p.fl;
-          const diffStr = diff > 0 ? `+${diff}` : diff;
-          sBody.innerHTML += `
-            <tr>
-              <td style="font-weight:700; color:var(--text-muted);">${idx + 1}</td>
-              <td style="font-weight:600; color:var(--primary);">${p.name}</td>
-              <td>${p.played}</td>
-              <td>${p.won}</td>
-              <td>${p.drawn}</td>
-              <td>${p.lost}</td>
-              <td>${p.fw}</td>
-              <td>${p.fl}</td>
-              <td style="color:${diff > 0 ? 'var(--success)' : diff < 0 ? 'var(--danger)' : 'inherit'}; font-weight:600;">${diffStr}</td>
-              <td><span class="pill">${p.bonus}</span></td>
-              <td class="pts">${p.points}</td>
-            </tr>
-          `;
-        });
-
-        // 2. Render Breaks Leaderboard
-        const bBody = document.getElementById('breaksBody');
-        bBody.innerHTML = '';
-        const breaksList = data.breaks || [];
-
-        if (breaksList.length === 0 || breaksList.every(b => b.list.length === 0)) {
-          bBody.innerHTML = '<tr><td colspan="7" style="text-align:center; color:var(--text-muted);">No 30+ breaks recorded yet.</td></tr>';
-        } else {
-          breaksList.forEach((b, idx) => {
-            const chips = b.list && b.list.length > 0 
-              ? b.list.map(renderBreakChip).join('') 
-              : '<span style="color:var(--text-muted);">None</span>';
-
-            bBody.innerHTML += `
-              <tr>
-                <td style="font-weight:700; color:var(--text-muted);">${idx + 1}</td>
-                <td style="font-weight:600; color:var(--primary);">${b.player}</td>
-                <td style="font-weight:700; font-size:1.05rem; color:${b.high >= 100 ? 'var(--danger)' : b.high >= 50 ? 'var(--primary)' : 'var(--text-main)'};">${b.high || '--'}</td>
-                <td>${b.total30}</td>
-                <td>${b.total50}</td>
-                <td>${b.total100}</td>
-                <td style="max-width:320px;">${chips}</td>
-              </tr>
-            `;
-          });
-        }
-
-        // 3. Process Fixtures into Completed vs Upcoming
-        const fixtures = data.fixtures || [];
-        const completed = fixtures.filter(f => f.homeScore !== null && f.awayScore !== null);
-        const upcoming = fixtures.filter(f => f.homeScore === null || f.awayScore === null);
-
-        // Group Completed Results by Date
-        const grouped = {};
-        completed.forEach(f => {
-          const key = f.date || 'Undated';
-          if (!grouped[key]) grouped[key] = [];
-          grouped[key].push(f);
-        });
-
-        // Sort Dates Descending
-        const sortedDates = Object.keys(grouped).sort((a, b) => {
-          if (a === 'Undated') return 1;
-          if (b === 'Undated') return -1;
-          return b.localeCompare(a);
-        });
-
-        const rContainer = document.getElementById('resultsContainer');
-        rContainer.innerHTML = '';
-
-        if (completed.length === 0) {
-          rContainer.innerHTML = '<div style="color:var(--text-muted); font-size:0.85rem;">No matches have been played yet.</div>';
-        } else {
-          sortedDates.forEach(dKey => {
-            const groupDiv = document.createElement('div');
-            groupDiv.className = 'date-group';
-            groupDiv.innerHTML = `<div class="date-heading">${formatDisplayDate(dKey)}</div>`;
-
-            grouped[dKey].forEach(f => {
-              const isSweep = f.homeScore === 6 || f.awayScore === 6;
-              const hWon = f.homeScore > f.awayScore;
-              const aWon = f.awayScore > f.homeScore;
-
-              const hbList = (f.homeBreaks || '').split(',').map(n => parseInt(n.trim(), 10)).filter(n => !isNaN(n) && n >= 30);
-              const abList = (f.awayBreaks || '').split(',').map(n => parseInt(n.trim(), 10)).filter(n => !isNaN(n) && n >= 30);
-
-              let breaksDetailHtml = '';
-              if (hbList.length > 0 || abList.length > 0) {
-                breaksDetailHtml = `
-                  <div class="match-breaks-detail">
-                    ${hbList.length > 0 ? `<div><strong>${f.home} Breaks:</strong>${hbList.map(renderBreakChip).join('')}</div>` : ''}
-                    ${abList.length > 0 ? `<div><strong>${f.away} Breaks:</strong>${abList.map(renderBreakChip).join('')}</div>` : ''}
-                  </div>
-                `;
-              }
-
-              groupDiv.innerHTML += `
-                <div class="match-item">
-                  <div class="match-main">
-                    <div>
-                      <div class="match-teams">
-                        <span style="${hWon ? 'color:var(--primary); font-weight:700;' : ''}">${f.home}</span>
-                        <span style="color:var(--text-muted); font-size:0.85rem; font-weight:normal;">vs</span>
-                        <span style="${aWon ? 'color:var(--primary); font-weight:700;' : ''}">${f.away}</span>
-                      </div>
-                      <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">Leg ${f.leg} &bull; 6 Frames</div>
-                    </div>
-                    <div style="display:flex; align-items:center; gap:10px;">
-                      ${isSweep ? '<span class="pill clean-sweep">6-0 CLEAN SWEEP (+2 BP)</span>' : ''}
-                      <span class="match-score">${f.homeScore} - ${f.awayScore}</span>
-                    </div>
-                  </div>
-                  ${breaksDetailHtml}
-                </div>
-              `;
-            });
-
-            rContainer.appendChild(groupDiv);
-          });
-        }
-
-        // 4. Render Outstanding Fixtures
-        const uContainer = document.getElementById('upcomingContainer');
-        uContainer.innerHTML = '';
-
-        if (upcoming.length === 0) {
-          uContainer.innerHTML = '<div style="color:var(--text-muted); font-size:0.85rem;">All fixtures have been completed!</div>';
-        } else {
-          upcoming.forEach((f, idx) => {
-            uContainer.innerHTML += `
-              <div class="upcoming-card">
-                <div>
-                  <div style="font-weight:600; font-size:0.9rem;">${f.home} vs ${f.away}</div>
-                  <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">Leg ${f.leg} &bull; ${f.date ? formatDisplayDate(f.date) : 'Unscheduled'}</div>
-                </div>
-                <span class="pill" style="color:var(--text-muted);">PENDING</span>
-              </div>
-            `;
-          });
-        }
-
+        statusMsg.className = 'status-msg success';
+        statusMsg.textContent = 'Migration successful! File downloaded.';
       } catch (err) {
-        document.getElementById('standingsBody').innerHTML = `<tr><td colspan="11" style="text-align:center; color:var(--danger);">Error loading data: ${err.message}</td></tr>`;
+        statusMsg.className = 'status-msg error';
+        statusMsg.textContent = err.message;
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Migrate Document';
+      }
+    });
+
+    // --- Tool 2: WebSocket Monitor ---
+    const latencyHistory = [];
+    const MAX_HISTORY = 60;
+    const canvas = document.getElementById("latencyChart");
+    const ctx = canvas.getContext("2d");
+    const logContainer = document.getElementById("logContainer");
+
+    function clearLocalLogs() {
+      logContainer.innerHTML = '<div class="log-entry"><span class="log-time">' + new Date().toTimeString().split(' ')[0] + '</span><span class="log-badge info">[CLEARED]</span><span class="log-text">Console cleared.</span></div>';
+    }
+
+    function drawChart() {
+      const w = canvas.width;
+      const h = canvas.height;
+      ctx.clearRect(0, 0, w, h);
+      ctx.strokeStyle = "rgba(255, 255, 255, 0.05)";
+      ctx.lineWidth = 1;
+      for (let y = 0; y < h; y += 36) {
+        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke();
+      }
+      if (latencyHistory.length < 2) return;
+      const maxLatency = 120;
+      const step = w / (MAX_HISTORY - 1);
+      ctx.beginPath();
+      latencyHistory.forEach((pt, i) => {
+        const x = i * step;
+        const val = pt === null ? maxLatency : Math.min(pt, maxLatency);
+        const y = h - (val / maxLatency) * (h - 20) - 10;
+        if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+      });
+      ctx.strokeStyle = "#38bdf8";
+      ctx.lineWidth = 2;
+      ctx.stroke();
+    }
+
+    function connectWebSocket() {
+      const protocol = window.location.protocol === "https:" ? "wss:" : "ws:";
+      const ws = new WebSocket(`${protocol}//${window.location.host}/ws/monitor`);
+      ws.onmessage = (event) => {
+        const data = JSON.parse(event.data);
+        const badge = document.getElementById("statusBadge");
+        const statusText = document.getElementById("statusText");
+        if (data.is_online) {
+          badge.className = "status-badge"; statusText.textContent = "CONNECTED";
+        } else {
+          badge.className = "status-badge offline"; statusText.textContent = "OFFLINE";
+        }
+        document.getElementById("latencyVal").textContent = data.latency !== null ? `${data.latency} ms` : "TIMEOUT";
+        document.getElementById("jitterVal").textContent = `${data.jitter} ms`;
+        document.getElementById("lossVal").textContent = `${data.loss_pct}%`;
+        document.getElementById("dropsSub").textContent = `${data.failed_checks} dropped cycles`;
+        document.getElementById("totalVal").textContent = data.total_checks.toLocaleString();
+        document.getElementById("lastTime").textContent = `Sync: ${data.timestamp}`;
+        latencyHistory.push(data.latency);
+        if (latencyHistory.length > MAX_HISTORY) latencyHistory.shift();
+        if (document.getElementById('tool-monitor').classList.contains('active')) drawChart();
+      };
+      ws.onclose = () => { setTimeout(connectWebSocket, 2000); };
+    }
+
+    // --- Tool 3: Snooker League Engine ---
+    let snookerPlayers = JSON.parse(localStorage.getItem('snooker_players') || '["Player 1", "Player 2", "Player 3", "Player 4"]');
+    let snookerFixtures = JSON.parse(localStorage.getItem('snooker_fixtures') || '[]');
+
+    function saveSnookerData() {
+      localStorage.setItem('snooker_players', JSON.stringify(snookerPlayers));
+      localStorage.setItem('snooker_fixtures', JSON.stringify(snookerFixtures));
+    }
+
+    function switchSnookerTab(tabId, btn) {
+      document.querySelectorAll('.snooker-subpage').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+      btn.classList.add('active');
+      if (tabId === 'tab-standings') renderStandings();
+      if (tabId === 'tab-breaks') renderBreaksLeaderboard();
+      if (tabId === 'tab-fixtures') renderFixtures();
+      if (tabId === 'tab-setup') renderPlayersList();
+      if (tabId === 'tab-publish') {
+        loadGithubConfig();
+        fetchGithubBackups();
       }
     }
 
-    loadData();
+    function addPlayer() {
+      const input = document.getElementById('newPlayerName');
+      const name = input.value.trim();
+      if (!name) return;
+      if (snookerPlayers.includes(name)) {
+        alert('Player already exists.');
+        return;
+      }
+      snookerPlayers.push(name);
+      saveSnookerData();
+      input.value = '';
+      renderPlayersList();
+    }
+
+    function editPlayer(idx) {
+      const current = snookerPlayers[idx];
+      const newName = prompt('Edit player name:', current);
+      if (!newName || !newName.trim() || newName.trim() === current) return;
+      const clean = newName.trim();
+      
+      snookerFixtures.forEach(f => {
+        if (f.home === current) f.home = clean;
+        if (f.away === current) f.away = clean;
+      });
+      snookerPlayers[idx] = clean;
+      saveSnookerData();
+      renderPlayersList();
+      renderStandings();
+      renderBreaksLeaderboard();
+    }
+
+    function removePlayer(idx) {
+      const name = snookerPlayers[idx];
+      if (!confirm(`Remove player "${name}"? Existing fixtures with this player will be cleared.`)) return;
+      snookerPlayers.splice(idx, 1);
+      snookerFixtures = snookerFixtures.filter(f => f.home !== name && f.away !== name);
+      saveSnookerData();
+      renderPlayersList();
+      renderStandings();
+      renderBreaksLeaderboard();
+      renderFixtures();
+    }
+
+    function renderPlayersList() {
+      const ul = document.getElementById('playersList');
+      ul.innerHTML = '';
+      if (snookerPlayers.length === 0) {
+        ul.innerHTML = '<li style="color:var(--text-muted); font-size:0.85rem;">No players added yet.</li>';
+        return;
+      }
+      snookerPlayers.forEach((p, idx) => {
+        const li = document.createElement('li');
+        li.className = 'player-item';
+        li.innerHTML = `
+          <span style="font-weight:600;">${p}</span>
+          <div style="display:flex; gap:8px;">
+            <button class="btn-secondary" style="padding:4px 8px; font-size:0.75rem;" onclick="editPlayer(${idx})">Edit</button>
+            <button class="btn-danger" onclick="removePlayer(${idx})">Remove</button>
+          </div>
+        `;
+        ul.appendChild(li);
+      });
+    }
+
+    function generateFixtures() {
+      if (snookerPlayers.length < 2) {
+        alert('You need at least 2 players to generate a league schedule.');
+        return;
+      }
+      if (snookerFixtures.length > 0 && !confirm('Generating new fixtures will reset all match scores and breaks. Continue?')) {
+        return;
+      }
+
+      snookerFixtures = [];
+      
+      for (let i = 0; i < snookerPlayers.length; i++) {
+        for (let j = i + 1; j < snookerPlayers.length; j++) {
+          snookerFixtures.push({
+            id: 'F' + (snookerFixtures.length + 1),
+            leg: 1,
+            date: '',
+            home: snookerPlayers[i],
+            away: snookerPlayers[j],
+            homeScore: null,
+            awayScore: null,
+            homeBreaks: '',
+            awayBreaks: ''
+          });
+        }
+      }
+
+      for (let i = 0; i < snookerPlayers.length; i++) {
+        for (let j = i + 1; j < snookerPlayers.length; j++) {
+          snookerFixtures.push({
+            id: 'F' + (snookerFixtures.length + 1),
+            leg: 2,
+            date: '',
+            home: snookerPlayers[j],
+            away: snookerPlayers[i],
+            homeScore: null,
+            awayScore: null,
+            homeBreaks: '',
+            awayBreaks: ''
+          });
+        }
+      }
+
+      saveSnookerData();
+      alert(`Generated ${snookerFixtures.length} matches (each player plays each other twice).`);
+      renderFixtures();
+      renderStandings();
+      renderBreaksLeaderboard();
+    }
+
+    function parseBreaks(str) {
+      if (!str) return [];
+      return str.split(',')
+        .map(b => parseInt(b.trim(), 10))
+        .filter(n => !isNaN(n) && n >= 30);
+    }
+
+    function updateFixture(fixtureId) {
+      const f = snookerFixtures.find(item => item.id === fixtureId);
+      if (!f) return;
+
+      const dateVal = document.getElementById(`d_${fixtureId}`).value;
+      const hVal = parseInt(document.getElementById(`h_${fixtureId}`).value, 10);
+      const aVal = parseInt(document.getElementById(`a_${fixtureId}`).value, 10);
+      const hBreaksVal = document.getElementById(`hb_${fixtureId}`).value.trim();
+      const aBreaksVal = document.getElementById(`ab_${fixtureId}`).value.trim();
+
+      f.date = dateVal;
+      f.homeBreaks = hBreaksVal;
+      f.awayBreaks = aBreaksVal;
+
+      if (isNaN(hVal) || isNaN(aVal)) {
+        f.homeScore = null;
+        f.awayScore = null;
+      } else {
+        if (hVal < 0 || aVal < 0 || (hVal + aVal !== 6)) {
+          alert('Invalid score. Every match consists of 6 total frames (e.g. 6-0, 5-1, 4-2, 3-3).');
+          document.getElementById(`h_${fixtureId}`).value = f.homeScore !== null ? f.homeScore : '';
+          document.getElementById(`a_${fixtureId}`).value = f.awayScore !== null ? f.awayScore : '';
+          return;
+        }
+        f.homeScore = hVal;
+        f.awayScore = aVal;
+      }
+
+      saveSnookerData();
+      renderStandings();
+      renderBreaksLeaderboard();
+      renderFixtures();
+    }
+
+    function renderFixtures() {
+      const container = document.getElementById('fixturesContainer');
+      container.innerHTML = '';
+
+      if (snookerFixtures.length === 0) {
+        container.innerHTML = '<p style="color: var(--text-muted); font-size: 0.88rem;">No fixtures scheduled yet. Visit League Setup to generate the schedule.</p>';
+        return;
+      }
+
+      snookerFixtures.forEach((f, idx) => {
+        const isCompleted = f.homeScore !== null && f.awayScore !== null;
+        const isSweep = isCompleted && (f.homeScore === 6 || f.awayScore === 6);
+
+        const card = document.createElement('div');
+        card.className = 'fixture-card';
+
+        card.innerHTML = `
+          <div class="fixture-top">
+            <div>
+              <div style="font-size:0.75rem; color:var(--text-muted); margin-bottom:4px; text-transform:uppercase;">
+                Match ${idx + 1} &bull; Leg ${f.leg}
+                ${isSweep ? '<span class="bonus-pill" style="margin-left:8px;">6-0 CLEAN SWEEP (+2 BONUS PTS)</span>' : ''}
+              </div>
+              <div class="fixture-teams">
+                <span style="color:${f.homeScore > f.awayScore ? 'var(--primary)' : 'inherit'}; font-weight:${f.homeScore > f.awayScore ? '700' : '500'};">${f.home}</span>
+                <span style="color:var(--text-muted); font-weight:normal; font-size:0.85rem;">vs</span>
+                <span style="color:${f.awayScore > f.homeScore ? 'var(--primary)' : 'inherit'}; font-weight:${f.awayScore > f.homeScore ? '700' : '500'};">${f.away}</span>
+              </div>
+            </div>
+            <div class="score-inputs">
+              <input type="date" class="custom-input" id="d_${f.id}" value="${f.date || ''}" style="padding: 5px 8px; font-size: 0.8rem;">
+              <input type="number" min="0" max="6" class="custom-input score-num" id="h_${f.id}" value="${f.homeScore !== null ? f.homeScore : ''}" placeholder="H">
+              <span style="color:var(--text-muted); font-weight:bold;">:</span>
+              <input type="number" min="0" max="6" class="custom-input score-num" id="a_${f.id}" value="${f.awayScore !== null ? f.awayScore : ''}" placeholder="A">
+              <button class="btn-secondary" style="padding:6px 12px; font-size:0.78rem;" onclick="updateFixture('${f.id}')">Save</button>
+            </div>
+          </div>
+
+          <div class="breaks-input-row">
+            <div>
+              <label class="break-field-label">${f.home} 30+ Breaks:</label>
+              <input type="text" class="custom-input" id="hb_${f.id}" value="${f.homeBreaks || ''}" placeholder="e.g. 37, 89, 56" style="width: 100%; font-size:0.82rem;">
+            </div>
+            <div>
+              <label class="break-field-label">${f.away} 30+ Breaks:</label>
+              <input type="text" class="custom-input" id="ab_${f.id}" value="${f.awayBreaks || ''}" placeholder="e.g. 42, 65" style="width: 100%; font-size:0.82rem;">
+            </div>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function calculateStandings() {
+      const stats = {};
+      snookerPlayers.forEach(p => {
+        stats[p] = { played: 0, won: 0, drawn: 0, lost: 0, fw: 0, fl: 0, bonus: 0, points: 0 };
+      });
+
+      snookerFixtures.forEach(f => {
+        if (f.homeScore !== null && f.awayScore !== null && stats[f.home] && stats[f.away]) {
+          const h = stats[f.home];
+          const a = stats[f.away];
+
+          h.played++;
+          a.played++;
+
+          h.fw += f.homeScore;
+          h.fl += f.awayScore;
+          a.fw += f.awayScore;
+          a.fl += f.homeScore;
+
+          h.points += f.homeScore;
+          a.points += f.awayScore;
+
+          if (f.homeScore > f.awayScore) {
+            h.won++;
+            a.lost++;
+            if (f.homeScore === 6) {
+              h.bonus += 2;
+              h.points += 2;
+            }
+          } else if (f.awayScore > f.homeScore) {
+            a.won++;
+            h.lost++;
+            if (f.awayScore === 6) {
+              a.bonus += 2;
+              a.points += 2;
+            }
+          } else {
+            h.drawn++;
+            a.drawn++;
+          }
+        }
+      });
+
+      return Object.keys(stats).map(name => ({ name, ...stats[name] }))
+        .sort((x, y) => {
+          if (y.points !== x.points) return y.points - x.points;
+          const diffX = x.fw - x.fl;
+          const diffY = y.fw - y.fl;
+          if (diffY !== diffX) return diffY - diffX;
+          return y.fw - x.fw;
+        });
+    }
+
+    function calculateBreaks() {
+      const data = {};
+      snookerPlayers.forEach(p => {
+        data[p] = { player: p, high: 0, total30: 0, total50: 0, total100: 0, list: [] };
+      });
+
+      snookerFixtures.forEach(f => {
+        if (data[f.home]) {
+          const hList = parseBreaks(f.homeBreaks);
+          hList.forEach(b => {
+            data[f.home].list.push(b);
+            if (b > data[f.home].high) data[f.home].high = b;
+            data[f.home].total30++;
+            if (b >= 100) data[f.home].total100++;
+            else if (b >= 50) data[f.home].total50++;
+          });
+        }
+        if (data[f.away]) {
+          const aList = parseBreaks(f.awayBreaks);
+          aList.forEach(b => {
+            data[f.away].list.push(b);
+            if (b > data[f.away].high) data[f.away].high = b;
+            data[f.away].total30++;
+            if (b >= 100) data[f.away].total100++;
+            else if (b >= 50) data[f.away].total50++;
+          });
+        }
+      });
+
+      Object.keys(data).forEach(p => {
+        data[p].list.sort((a, b) => b - a);
+      });
+
+      return Object.values(data).sort((a, b) => {
+        if (b.high !== a.high) return b.high - a.high;
+        if (b.total100 !== a.total100) return b.total100 - a.total100;
+        if (b.total50 !== a.total50) return b.total50 - a.total50;
+        return b.total30 - a.total30;
+      });
+    }
+
+    function renderBreaksLeaderboard() {
+      const breaksData = calculateBreaks();
+      const tbody = document.getElementById('breaksLeaderboardBody');
+      tbody.innerHTML = '';
+
+      if (breaksData.length === 0 || breaksData.every(p => p.list.length === 0)) {
+        tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; color: var(--text-muted);">No 30+ breaks recorded yet.</td></tr>';
+        return;
+      }
+
+      breaksData.forEach((p, idx) => {
+        const breakPills = p.list.length > 0 
+          ? p.list.map(b => `<span style="display:inline-block; margin:2px; padding:2px 6px; border-radius:4px; font-weight:700; font-size:0.75rem; background:${b >= 100 ? 'rgba(239,68,68,0.2)' : b >= 50 ? 'rgba(56,189,248,0.18)' : 'rgba(255,255,255,0.06)'}; color:${b >= 100 ? 'var(--danger)' : b >= 50 ? 'var(--primary)' : 'var(--text-main)'}; border:1px solid ${b >= 100 ? 'var(--danger)' : b >= 50 ? 'var(--primary)' : 'var(--border-color)'};">${b}</span>`).join('')
+          : '<span style="color:var(--text-muted);">None</span>';
+
+        tbody.innerHTML += `
+          <tr>
+            <td style="font-weight:700; color:var(--text-muted);">${idx + 1}</td>
+            <td style="font-weight:600; color:var(--primary);">${p.player}</td>
+            <td style="font-weight:700; font-size:1.05rem; color:${p.high >= 100 ? 'var(--danger)' : p.high >= 50 ? 'var(--primary)' : 'var(--text-main)'};">${p.high || '--'}</td>
+            <td>${p.total30}</td>
+            <td>${p.total50}</td>
+            <td>${p.total100}</td>
+            <td style="max-width: 320px;">${breakPills}</td>
+          </tr>
+        `;
+      });
+    }
+
+    function renderStandings() {
+      const sorted = calculateStandings();
+      const tbody = document.getElementById('standingsTableBody');
+      tbody.innerHTML = '';
+
+      if (sorted.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="11" style="text-align: center; color: var(--text-muted);">No players in league yet.</td></tr>';
+        return;
+      }
+
+      sorted.forEach((p, idx) => {
+        const diff = p.fw - p.fl;
+        const diffDisplay = diff > 0 ? `+${diff}` : diff;
+        tbody.innerHTML += `
+          <tr>
+            <td style="font-weight:700; color:var(--text-muted);">${idx + 1}</td>
+            <td style="font-weight:600; color:var(--primary);">${p.name}</td>
+            <td>${p.played}</td>
+            <td>${p.won}</td>
+            <td>${p.drawn}</td>
+            <td>${p.lost}</td>
+            <td>${p.fw}</td>
+            <td>${p.fl}</td>
+            <td style="color:${diff > 0 ? 'var(--success)' : diff < 0 ? 'var(--danger)' : 'inherit'}; font-weight:600;">${diffDisplay}</td>
+            <td><span class="badge-pill" style="background:rgba(255,255,255,0.05);">${p.bonus}</span></td>
+            <td style="font-weight:700; font-size:1.05rem; color:var(--primary);">${p.points}</td>
+          </tr>
+        `;
+      });
+    }
+
+    function resetAllLeagueData() {
+      if (!confirm('Are you sure you want to reset all players, fixtures, and scores?')) return;
+      localStorage.removeItem('snooker_players');
+      localStorage.removeItem('snooker_fixtures');
+      snookerPlayers = ["Player 1", "Player 2", "Player 3", "Player 4"];
+      snookerFixtures = [];
+      saveSnookerData();
+      renderAllSnooker();
+    }
+
+    // --- GitHub & 5-Snapshot Backup Engine ---
+    function getGithubConfig() {
+      const saved = JSON.parse(localStorage.getItem('snooker_github_cfg') || '{}');
+      return {
+        owner: saved.owner || 'petermoneypenny-web',
+        repo: saved.repo || 'DSC',
+        branch: saved.branch || 'main',
+        path: saved.path || 'standings.json',
+        token: saved.token || ''
+      };
+    }
+
+    function saveGithubConfig() {
+      const config = {
+        owner: document.getElementById('ghOwner').value.trim() || 'petermoneypenny-web',
+        repo: document.getElementById('ghRepo').value.trim() || 'DSC',
+        branch: document.getElementById('ghBranch').value.trim() || 'main',
+        path: document.getElementById('ghPath').value.trim() || 'standings.json',
+        token: document.getElementById('ghToken').value.trim()
+      };
+      localStorage.setItem('snooker_github_cfg', JSON.stringify(config));
+      alert('GitHub configuration saved!');
+    }
+
+    function loadGithubConfig() {
+      const cfg = getGithubConfig();
+      document.getElementById('ghOwner').value = cfg.owner;
+      document.getElementById('ghRepo').value = cfg.repo;
+      document.getElementById('ghBranch').value = cfg.branch;
+      document.getElementById('ghPath').value = cfg.path;
+      document.getElementById('ghToken').value = cfg.token;
+    }
+
+    async function ghGetFileSha(url, token) {
+      try {
+        const res = await fetch(url, {
+          headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github.v3+json' }
+        });
+        if (res.ok) {
+          const d = await res.json();
+          return d.sha;
+        }
+      } catch (e) {}
+      return null;
+    }
+
+    async function ghPutFile(url, token, branch, message, contentString) {
+      const sha = await ghGetFileSha(url, token);
+      const contentBase64 = btoa(unescape(encodeURIComponent(contentString)));
+      const body = { message, content: contentBase64, branch };
+      if (sha) body.sha = sha;
+
+      const res = await fetch(url, {
+        method: 'PUT',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Accept': 'application/vnd.github.v3+json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+      });
+      if (!res.ok) {
+        const err = await res.json();
+        throw new Error(err.message || 'GitHub commit failed');
+      }
+      return res.json();
+    }
+
+    async function ghDeleteFile(url, token, branch, message) {
+      const sha = await ghGetFileSha(url, token);
+      if (!sha) return;
+      await fetch(url, {
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Accept': 'application/vnd.github.v3+json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ message, sha, branch })
+      });
+    }
+
+    async function publishToGithub() {
+      const cfg = getGithubConfig();
+      const statusDiv = document.getElementById('quickPublishStatus');
+      const settingsStatus = document.getElementById('publishStatus');
+
+      const setStatus = (msg, type) => {
+        if (statusDiv) {
+          statusDiv.className = `status-msg ${type}`;
+          statusDiv.style.display = 'block';
+          statusDiv.textContent = msg;
+        }
+        if (settingsStatus) {
+          settingsStatus.className = `status-msg ${type}`;
+          settingsStatus.style.display = 'block';
+          settingsStatus.textContent = msg;
+        }
+      };
+
+      if (!cfg.token) {
+        alert('Please enter your GitHub Personal Access Token (PAT) in the "GitHub & Backups" tab first.');
+        switchSnookerTab('tab-publish', document.querySelectorAll('.tab-btn')[4]);
+        return;
+      }
+
+      setStatus('Step 1/3: Committing standings.json to GitHub...', 'info');
+
+      try {
+        const timestamp = new Date().toISOString();
+        const payloadData = {
+          updatedAt: timestamp,
+          standings: calculateStandings(),
+          breaks: calculateBreaks(),
+          fixtures: snookerFixtures,
+          rawPlayers: snookerPlayers
+        };
+
+        const jsonString = JSON.stringify(payloadData, null, 2);
+
+        // 1. Commit main standings.json
+        const mainUrl = `https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/${cfg.path}`;
+        await ghPutFile(mainUrl, cfg.token, cfg.branch, `Update standings [${new Date().toLocaleDateString()}]`, jsonString);
+
+        // 2. Commit timestamped snapshot
+        setStatus('Step 2/3: Archiving snapshot to backups/...', 'info');
+        const snapFileName = `snapshot_${timestamp.replace(/[:.]/g, '-')}.json`;
+        const snapPath = `backups/${snapFileName}`;
+        const snapUrl = `https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/${snapPath}`;
+        await ghPutFile(snapUrl, cfg.token, cfg.branch, `Add backup snapshot: ${snapFileName}`, jsonString);
+
+        // 3. Update backups.json index & prune to last 5
+        setStatus('Step 3/3: Maintaining last 5 backups...', 'info');
+        const indexUrl = `https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/backups/backups.json`;
+        let backupIndex = [];
+        try {
+          const indexRes = await fetch(indexUrl, {
+            headers: { 'Authorization': `Bearer ${cfg.token}`, 'Accept': 'application/vnd.github.v3+json' }
+          });
+          if (indexRes.ok) {
+            const indexJson = await indexRes.json();
+            const decoded = decodeURIComponent(escape(atob(indexJson.content)));
+            backupIndex = JSON.parse(decoded);
+          }
+        } catch (e) {}
+
+        // Prepend current snapshot
+        backupIndex.unshift({
+          filename: snapFileName,
+          path: snapPath,
+          timestamp: timestamp,
+          playersCount: snookerPlayers.length,
+          fixturesCount: snookerFixtures.length
+        });
+
+        // Prune older than 5
+        while (backupIndex.length > 5) {
+          const toDelete = backupIndex.pop();
+          const delUrl = `https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/${toDelete.path}`;
+          try {
+            await ghDeleteFile(delUrl, cfg.token, cfg.branch, `Prune old backup: ${toDelete.filename}`);
+          } catch (e) {}
+        }
+
+        // Commit updated backup index
+        await ghPutFile(indexUrl, cfg.token, cfg.branch, `Update backup index (${backupIndex.length} snapshots)`, JSON.stringify(backupIndex, null, 2));
+
+        setStatus(`Published & Backed up successfully! (Retaining last 5 snapshots)`, 'success');
+        fetchGithubBackups();
+
+        setTimeout(() => {
+          if (statusDiv) statusDiv.style.display = 'none';
+        }, 5000);
+      } catch (err) {
+        setStatus(`Publish / Backup failed: ${err.message}`, 'error');
+      }
+    }
+
+    async function fetchGithubBackups() {
+      const cfg = getGithubConfig();
+      const container = document.getElementById('backupsContainer');
+      if (!cfg.token) {
+        container.innerHTML = '<p style="color:var(--text-muted); font-size:0.85rem;">Add your GitHub Token above to view backups.</p>';
+        return;
+      }
+
+      container.innerHTML = '<p style="color:var(--text-muted); font-size:0.85rem;">Checking GitHub for backups...</p>';
+
+      try {
+        const indexUrl = `https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/backups/backups.json?nocache=${Date.now()}`;
+        const res = await fetch(indexUrl, {
+          headers: { 'Authorization': `Bearer ${cfg.token}`, 'Accept': 'application/vnd.github.v3+json' }
+        });
+
+        if (!res.ok) {
+          container.innerHTML = '<p style="color:var(--text-muted); font-size:0.85rem;">No backups found on GitHub yet. Make a publish to create the first backup.</p>';
+          return;
+        }
+
+        const data = await res.json();
+        const backups = JSON.parse(decodeURIComponent(escape(atob(data.content))));
+
+        if (!backups || backups.length === 0) {
+          container.innerHTML = '<p style="color:var(--text-muted); font-size:0.85rem;">No backups in index.</p>';
+          return;
+        }
+
+        container.innerHTML = '';
+        backups.forEach((b, idx) => {
+          const d = new Date(b.timestamp);
+          const timeFormatted = d.toLocaleDateString() + ' ' + d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+          const card = document.createElement('div');
+          card.className = 'backup-card';
+          card.innerHTML = `
+            <div>
+              <div style="font-weight:700; font-size:0.88rem; color:var(--primary);">Backup #${idx + 1} &bull; ${timeFormatted}</div>
+              <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">
+                File: <code>${b.filename}</code> &bull; ${b.playersCount || '?'} Players &bull; ${b.fixturesCount || '?'} Matches
+              </div>
+            </div>
+            <button class="btn-secondary" style="padding:5px 12px; font-size:0.78rem;" onclick="restoreSnapshot('${b.path}')">Restore Data</button>
+          `;
+          container.appendChild(card);
+        });
+      } catch (err) {
+        container.innerHTML = `<p style="color:var(--danger); font-size:0.85rem;">Could not load backups: ${err.message}</p>`;
+      }
+    }
+
+    async function restoreSnapshot(path) {
+      if (!confirm(`Restore this backup from ${path}? This will overwrite your current browser data with the snapshot contents.`)) return;
+      const cfg = getGithubConfig();
+      const snapUrl = `https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/${path}?nocache=${Date.now()}`;
+
+      try {
+        const res = await fetch(snapUrl, {
+          headers: { 'Authorization': `Bearer ${cfg.token}`, 'Accept': 'application/vnd.github.v3+json' }
+        });
+        if (!res.ok) throw new Error('Could not download snapshot from GitHub');
+        const fileJson = await res.json();
+        const payload = JSON.parse(decodeURIComponent(escape(atob(fileJson.content))));
+
+        if (payload.rawPlayers) {
+          snookerPlayers = payload.rawPlayers;
+        } else if (payload.standings) {
+          snookerPlayers = payload.standings.map(s => s.name);
+        }
+
+        if (payload.fixtures) {
+          snookerFixtures = payload.fixtures;
+        }
+
+        saveSnookerData();
+        renderAllSnooker();
+        alert('Data successfully restored! Players, scores, and breaks are now loaded.');
+        switchSnookerTab('tab-standings', document.querySelectorAll('.tab-btn')[0]);
+      } catch (err) {
+        alert('Restore failed: ' + err.message);
+      }
+    }
+
+    function renderAllSnooker() {
+      renderPlayersList();
+      renderStandings();
+      renderBreaksLeaderboard();
+      renderFixtures();
+    }
+
+    renderAllSnooker();
+    connectWebSocket();
   </script>
 </body>
 </html>
