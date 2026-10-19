@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-19T05:10:32.214Z",
+  "updatedAt": "2026-10-19T05:10:52.399Z",
   "standings": [
     {
       "name": "Player 1",
@@ -18,10 +18,10 @@
       "won": 2,
       "drawn": 1,
       "lost": 3,
-      "fw": 19,
-      "fl": 17,
+      "fw": 18,
+      "fl": 18,
       "bonus": 2,
-      "points": 21
+      "points": 20
     },
     {
       "name": "Player 2",
@@ -40,10 +40,10 @@
       "won": 1,
       "drawn": 2,
       "lost": 3,
-      "fw": 14,
-      "fl": 22,
+      "fw": 15,
+      "fl": 21,
       "bonus": 0,
-      "points": 14
+      "points": 15
     }
   ],
   "breaks": [
@@ -224,8 +224,8 @@
       "date": "2026-10-13",
       "home": "Player 4",
       "away": "Player 3",
-      "homeScore": 5,
-      "awayScore": 1,
+      "homeScore": 4,
+      "awayScore": 2,
       "homeBreaks": "",
       "awayBreaks": ""
     }
