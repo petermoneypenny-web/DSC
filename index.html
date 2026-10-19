@@ -160,7 +160,9 @@
 
     async function loadData() {
       try {
-        const res = await fetch('standings.json?nocache=' + Date.now());
+        const res = await fetch('standings.json?t=' + new Date().getTime(), {
+  cache: 'no-store'
+});
         if (!res.ok) throw new Error('standings.json could not be loaded');
         const data = await res.json();
 
