@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snooker League Standings</title>
+  <style>
+    :root {
+      --bg-main: #0f172a;
+      --card-bg: #1e293b;
+      --border-color: #334155;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --primary: #38bdf8;
+      --success: #22c55e;
+      --danger: #ef4444;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background-color: var(--bg-main); color: var(--text-main); padding: 24px 16px; display: flex; justify-content: center; }
+    .container { width: 100%; max-width: 900px; display: flex; flex-direction: column; gap: 20px; }
+    header { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 10px; border-bottom: 1px solid var(--border-color); padding-bottom: 16px; }
+    h1 { font-size: 1.5rem; color: var(--text-main); }
+    .subtitle { font-size: 0.85rem; color: var(--text-muted); margin-top: 4px; }
+    .card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 10px; overflow: hidden; }
+    .table-responsive { width: 100%; overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.9rem; min-width: 600px; }
+    th, td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--border-color); }
+    th { background: rgba(15, 23, 42, 0.6); color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; font-weight: 700; }
+    tr:hover { background: rgba(255, 255, 255, 0.02); }
+    .pts { font-weight: 800; color: var(--primary); font-size: 1.05rem; }
+    .pill { display: inline-block; padding: 2px 7px; border-radius: 4px; font-size: 0.75rem; font-weight: 700; background: rgba(255, 255, 255, 0.06); }
+    .fixtures-list { display: grid; grid-template-columns: 1fr; gap: 10px; padding: 16px; }
+    .match-card { background: rgba(15, 23, 42, 0.5); border: 1px solid var(--border-color); border-radius: 6px; padding: 12px 16px; display: flex; justify-content: space-between; align-items: center; }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <div>
+        <h1>Snooker League Standings</h1>
+        <div class="subtitle">6 frames/match &bull; 1 pt/frame won &bull; +2 bonus for 6-0 sweep</div>
+      </div>
+      <div id="updatedTime" class="subtitle">Syncing...</div>
+    </header>
+
+    <div class="card">
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 40px;">Pos</th>
+              <th>Player</th>
+              <th>P</th>
+              <th>W</th>
+              <th>D</th>
+              <th>L</th>
+              <th>FW</th>
+              <th>FL</th>
+              <th>+/-</th>
+              <th>BP</th>
+              <th style="color: var(--primary);">Pts</th>
+            </tr>
+          </thead>
+          <tbody id="standingsBody">
+            <tr><td colspan="11" style="text-align:center; color:var(--text-muted);">Loading standings...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <h2 style="font-size: 1.15rem; margin-top: 10px;">Recent Results & Fixtures</h2>
+    <div class="card">
+      <div id="fixturesList" class="fixtures-list">
+        <div style="color:var(--text-muted); font-size:0.85rem;">Loading fixtures...</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    async function loadData() {
+      try {
+        const res = await fetch('standings.json?nocache=' + Date.now());
+        if (!res.ok) throw new Error('standings.json not found');
+        const data = await res.json();
+
+        // Render timestamp
+        if (data.updatedAt) {
+          const d = new Date(data.updatedAt);
+          document.getElementById('updatedTime').textContent = 'Last updated: ' + d.toLocaleDateString() + ' ' + d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        }
+
+        // Render Standings
+        const tbody = document.getElementById('standingsBody');
+        tbody.innerHTML = '';
+        (data.standings || []).forEach((p, idx) => {
+          const diff = p.fw - p.fl;
+          const diffStr = diff > 0 ? `+${diff}` : diff;
+          tbody.innerHTML += `
+            <tr>
+              <td style="font-weight:700; color:var(--text-muted);">${idx + 1}</td>
+              <td style="font-weight:600; color:var(--primary);">${p.name}</td>
+              <td>${p.played}</td>
+              <td>${p.won}</td>
+              <td>${p.drawn}</td>
+              <td>${p.lost}</td>
+              <td>${p.fw}</td>
+              <td>${p.fl}</td>
+              <td style="color:${diff > 0 ? 'var(--success)' : diff < 0 ? 'var(--danger)' : 'inherit'}; font-weight:600;">${diffStr}</td>
+              <td><span class="pill">${p.bonus}</span></td>
+              <td class="pts">${p.points}</td>
+            </tr>
+          `;
+        });
+
+        // Render Fixtures
+        const fContainer = document.getElementById('fixturesList');
+        fContainer.innerHTML = '';
+        (data.fixtures || []).forEach((f, idx) => {
+          const isPlayed = f.homeScore !== null && f.awayScore !== null;
+          const scoreStr = isPlayed ? `${f.homeScore} - ${f.awayScore}` : 'vs';
+          const isSweep = isPlayed && (f.homeScore === 6 || f.awayScore === 6);
+
+          fContainer.innerHTML += `
+            <div class="match-card">
+              <div>
+                <span style="font-size:0.75rem; color:var(--text-muted); text-transform:uppercase;">Match ${idx + 1} (Leg ${f.leg})</span>
+                <div style="font-weight:600; margin-top:3px;">
+                  <span style="${isPlayed && f.homeScore > f.awayScore ? 'color:var(--primary); font-weight:700;' : ''}">${f.home}</span>
+                  <span style="color:var(--text-muted); margin: 0 6px;">${scoreStr}</span>
+                  <span style="${isPlayed && f.awayScore > f.homeScore ? 'color:var(--primary); font-weight:700;' : ''}">${f.away}</span>
+                </div>
+              </div>
+              ${isSweep ? '<span class="pill" style="color:var(--success); border:1px solid var(--success);">6-0 Clean Sweep (+2 BP)</span>' : ''}
+            </div>
+          `;
+        });
+
+      } catch (err) {
+        document.getElementById('standingsBody').innerHTML = `<tr><td colspan="11" style="text-align:center; color:var(--danger);">Could not load standings: ${err.message}</td></tr>`;
+      }
+    }
+
+    loadData();
+  </script>
+</body>
+</html>
