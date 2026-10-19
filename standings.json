@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-19T05:10:52.399Z",
+  "updatedAt": "2026-10-19T05:14:13.885Z",
   "standings": [
     {
       "name": "Player 1",
@@ -229,5 +229,11 @@
       "homeBreaks": "",
       "awayBreaks": ""
     }
+  ],
+  "rawPlayers": [
+    "Player 1",
+    "Player 2",
+    "Player 3",
+    "Player 4"
   ]
 }
