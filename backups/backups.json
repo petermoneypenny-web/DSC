@@ -1,5 +1,12 @@
 [
   {
+    "filename": "snapshot_2026-10-21T04-13-25-903Z.json",
+    "path": "backups/snapshot_2026-10-21T04-13-25-903Z.json",
+    "timestamp": "2026-10-21T04:13:25.903Z",
+    "playersCount": 12,
+    "fixturesCount": 132
+  },
+  {
     "filename": "snapshot_2026-10-19T07-17-49-923Z.json",
     "path": "backups/snapshot_2026-10-19T07-17-49-923Z.json",
     "timestamp": "2026-10-19T07:17:49.923Z",
