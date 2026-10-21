@@ -1,6 +1,72 @@
 {
-  "updatedAt": "2026-10-19T07:17:49.923Z",
+  "updatedAt": "2026-10-21T04:13:25.903Z",
   "standings": [
+    {
+      "name": "Barry Garwood",
+      "played": 1,
+      "won": 1,
+      "drawn": 0,
+      "lost": 0,
+      "fw": 5,
+      "fl": 1,
+      "bonus": 0,
+      "points": 5
+    },
+    {
+      "name": "Dan Cuthbert",
+      "played": 1,
+      "won": 1,
+      "drawn": 0,
+      "lost": 0,
+      "fw": 5,
+      "fl": 1,
+      "bonus": 0,
+      "points": 5
+    },
+    {
+      "name": "Pete Moneypenny",
+      "played": 1,
+      "won": 1,
+      "drawn": 0,
+      "lost": 0,
+      "fw": 4,
+      "fl": 2,
+      "bonus": 0,
+      "points": 4
+    },
+    {
+      "name": "Adam Smith",
+      "played": 1,
+      "won": 0,
+      "drawn": 0,
+      "lost": 1,
+      "fw": 2,
+      "fl": 4,
+      "bonus": 0,
+      "points": 2
+    },
+    {
+      "name": "Craig Ferris",
+      "played": 1,
+      "won": 0,
+      "drawn": 0,
+      "lost": 1,
+      "fw": 1,
+      "fl": 5,
+      "bonus": 0,
+      "points": 1
+    },
+    {
+      "name": "Jamie Dixon",
+      "played": 1,
+      "won": 0,
+      "drawn": 0,
+      "lost": 1,
+      "fw": 1,
+      "fl": 5,
+      "bonus": 0,
+      "points": 1
+    },
     {
       "name": "Rory Dawson",
       "played": 0,
@@ -13,40 +79,7 @@
       "points": 0
     },
     {
-      "name": "Barry Garwood",
-      "played": 0,
-      "won": 0,
-      "drawn": 0,
-      "lost": 0,
-      "fw": 0,
-      "fl": 0,
-      "bonus": 0,
-      "points": 0
-    },
-    {
-      "name": "Dan Cuthbert",
-      "played": 0,
-      "won": 0,
-      "drawn": 0,
-      "lost": 0,
-      "fw": 0,
-      "fl": 0,
-      "bonus": 0,
-      "points": 0
-    },
-    {
       "name": "Gary Connelly",
-      "played": 0,
-      "won": 0,
-      "drawn": 0,
-      "lost": 0,
-      "fw": 0,
-      "fl": 0,
-      "bonus": 0,
-      "points": 0
-    },
-    {
-      "name": "Craig Ferris",
       "played": 0,
       "won": 0,
       "drawn": 0,
@@ -79,40 +112,7 @@
       "points": 0
     },
     {
-      "name": "Jamie Dixon",
-      "played": 0,
-      "won": 0,
-      "drawn": 0,
-      "lost": 0,
-      "fw": 0,
-      "fl": 0,
-      "bonus": 0,
-      "points": 0
-    },
-    {
-      "name": "Pete Moneypenny",
-      "played": 0,
-      "won": 0,
-      "drawn": 0,
-      "lost": 0,
-      "fw": 0,
-      "fl": 0,
-      "bonus": 0,
-      "points": 0
-    },
-    {
       "name": "Wayne Sampson",
-      "played": 0,
-      "won": 0,
-      "drawn": 0,
-      "lost": 0,
-      "fw": 0,
-      "fl": 0,
-      "bonus": 0,
-      "points": 0
-    },
-    {
-      "name": "Adam Smith",
       "played": 0,
       "won": 0,
       "drawn": 0,
@@ -379,11 +379,11 @@
     {
       "id": "F14",
       "leg": 1,
-      "date": "",
+      "date": "2026-10-20",
       "home": "Barry Garwood",
       "away": "Craig Ferris",
-      "homeScore": null,
-      "awayScore": null,
+      "homeScore": 5,
+      "awayScore": 1,
       "homeBreaks": "",
       "awayBreaks": ""
     },
@@ -511,11 +511,11 @@
     {
       "id": "F26",
       "leg": 1,
-      "date": "",
+      "date": "2026-10-20",
       "home": "Dan Cuthbert",
       "away": "Jamie Dixon",
-      "homeScore": null,
-      "awayScore": null,
+      "homeScore": 5,
+      "awayScore": 1,
       "homeBreaks": "",
       "awayBreaks": ""
     },
@@ -907,11 +907,11 @@
     {
       "id": "F62",
       "leg": 1,
-      "date": "",
+      "date": "2026-10-20",
       "home": "Pete Moneypenny",
       "away": "Adam Smith",
-      "homeScore": null,
-      "awayScore": null,
+      "homeScore": 4,
+      "awayScore": 2,
       "homeBreaks": "",
       "awayBreaks": ""
     },
