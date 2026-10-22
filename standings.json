@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-21T04:13:25.903Z",
+  "updatedAt": "2026-10-22T04:28:04.388Z",
   "standings": [
     {
       "name": "Barry Garwood",
@@ -136,6 +136,16 @@
   ],
   "breaks": [
     {
+      "player": "Adam Smith",
+      "high": 37,
+      "total30": 1,
+      "total50": 0,
+      "total100": 0,
+      "list": [
+        37
+      ]
+    },
+    {
       "player": "Rory Dawson",
       "high": 0,
       "total30": 0,
@@ -209,14 +219,6 @@
     },
     {
       "player": "Wayne Sampson",
-      "high": 0,
-      "total30": 0,
-      "total50": 0,
-      "total100": 0,
-      "list": []
-    },
-    {
-      "player": "Adam Smith",
       "high": 0,
       "total30": 0,
       "total50": 0,
@@ -913,7 +915,7 @@
       "homeScore": 4,
       "awayScore": 2,
       "homeBreaks": "",
-      "awayBreaks": ""
+      "awayBreaks": "37"
     },
     {
       "id": "F63",
