@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-06T00:51:39.839Z",
+  "updatedAt": "2026-11-06T00:56:25.138Z",
   "standings": [
     {
       "name": "Barry Garwood",
@@ -136,6 +136,18 @@
   ],
   "breaks": [
     {
+      "player": "Craig Ferris",
+      "high": 52,
+      "total30": 3,
+      "total50": 1,
+      "total100": 0,
+      "list": [
+        52,
+        48,
+        32
+      ]
+    },
+    {
       "player": "Dan Cuthbert",
       "high": 36,
       "total30": 1,
@@ -148,11 +160,13 @@
     {
       "player": "Barry Garwood",
       "high": 33,
-      "total30": 1,
+      "total30": 3,
       "total50": 0,
       "total100": 0,
       "list": [
-        33
+        33,
+        33,
+        32
       ]
     },
     {
@@ -165,14 +179,6 @@
     },
     {
       "player": "Gary Connelly",
-      "high": 0,
-      "total30": 0,
-      "total50": 0,
-      "total100": 0,
-      "list": []
-    },
-    {
-      "player": "Craig Ferris",
       "high": 0,
       "total30": 0,
       "total50": 0,
@@ -389,7 +395,7 @@
       "homeScore": 5,
       "awayScore": 1,
       "homeBreaks": "33",
-      "awayBreaks": ""
+      "awayBreaks": "52, 48, 32"
     },
     {
       "id": "F15",
@@ -1192,7 +1198,7 @@
       "homeScore": 4,
       "awayScore": 2,
       "homeBreaks": "",
-      "awayBreaks": ""
+      "awayBreaks": "33, 32"
     },
     {
       "id": "F88",
