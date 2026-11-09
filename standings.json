@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-09T15:57:36.580Z",
+  "updatedAt": "2026-11-09T15:59:33.526Z",
   "standings": [
     {
       "name": "Dan Cuthbert",
@@ -137,13 +137,17 @@
   "breaks": [
     {
       "player": "Craig Ferris",
-      "high": 52,
-      "total30": 3,
-      "total50": 1,
+      "high": 73,
+      "total30": 7,
+      "total50": 2,
       "total100": 0,
       "list": [
+        73,
         52,
         48,
+        43,
+        39,
+        32,
         32
       ]
     },
@@ -1408,7 +1412,7 @@
       "homeScore": 4,
       "awayScore": 2,
       "homeBreaks": "",
-      "awayBreaks": ""
+      "awayBreaks": "73, 43, 39, 32"
     },
     {
       "id": "F107",
