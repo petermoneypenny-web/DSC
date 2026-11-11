@@ -1,6 +1,17 @@
 {
-  "updatedAt": "2026-11-11T09:16:27.412Z",
+  "updatedAt": "2026-11-11T09:36:17.090Z",
   "standings": [
+    {
+      "name": "Barry Garwood",
+      "played": 3,
+      "won": 2,
+      "drawn": 0,
+      "lost": 1,
+      "fw": 13,
+      "fl": 5,
+      "bonus": 2,
+      "points": 15
+    },
     {
       "name": "Dan Cuthbert",
       "played": 2,
@@ -22,17 +33,6 @@
       "fl": 10,
       "bonus": 0,
       "points": 8
-    },
-    {
-      "name": "Barry Garwood",
-      "played": 2,
-      "won": 1,
-      "drawn": 0,
-      "lost": 1,
-      "fw": 7,
-      "fl": 5,
-      "bonus": 0,
-      "points": 7
     },
     {
       "name": "Pete Moneypenny",
@@ -68,6 +68,28 @@
       "points": 6
     },
     {
+      "name": "Wayne Sampson",
+      "played": 2,
+      "won": 0,
+      "drawn": 2,
+      "lost": 0,
+      "fw": 6,
+      "fl": 6,
+      "bonus": 0,
+      "points": 6
+    },
+    {
+      "name": "Craig Ferris",
+      "played": 3,
+      "won": 0,
+      "drawn": 1,
+      "lost": 2,
+      "fw": 6,
+      "fl": 12,
+      "bonus": 0,
+      "points": 6
+    },
+    {
       "name": "Gary Connelly",
       "played": 2,
       "won": 0,
@@ -77,17 +99,6 @@
       "fl": 7,
       "bonus": 0,
       "points": 5
-    },
-    {
-      "name": "Andy Keddo",
-      "played": 1,
-      "won": 1,
-      "drawn": 0,
-      "lost": 0,
-      "fw": 4,
-      "fl": 2,
-      "bonus": 0,
-      "points": 4
     },
     {
       "name": "Alex Kirchin",
@@ -101,6 +112,17 @@
       "points": 4
     },
     {
+      "name": "Andy Keddo",
+      "played": 2,
+      "won": 1,
+      "drawn": 0,
+      "lost": 1,
+      "fw": 4,
+      "fl": 8,
+      "bonus": 0,
+      "points": 4
+    },
+    {
       "name": "Justin Housden",
       "played": 1,
       "won": 0,
@@ -108,28 +130,6 @@
       "lost": 0,
       "fw": 3,
       "fl": 3,
-      "bonus": 0,
-      "points": 3
-    },
-    {
-      "name": "Wayne Sampson",
-      "played": 1,
-      "won": 0,
-      "drawn": 1,
-      "lost": 0,
-      "fw": 3,
-      "fl": 3,
-      "bonus": 0,
-      "points": 3
-    },
-    {
-      "name": "Craig Ferris",
-      "played": 2,
-      "won": 0,
-      "drawn": 0,
-      "lost": 2,
-      "fw": 3,
-      "fl": 9,
       "bonus": 0,
       "points": 3
     }
@@ -422,11 +422,11 @@
     {
       "id": "F16",
       "leg": 1,
-      "date": "",
+      "date": "2026-11-10",
       "home": "Barry Garwood",
       "away": "Andy Keddo",
-      "homeScore": null,
-      "awayScore": null,
+      "homeScore": 6,
+      "awayScore": 0,
       "homeBreaks": "",
       "awayBreaks": ""
     },
@@ -1445,11 +1445,11 @@
     {
       "id": "F109",
       "leg": 2,
-      "date": "",
+      "date": "2026-11-10",
       "home": "Wayne Sampson",
       "away": "Craig Ferris",
-      "homeScore": null,
-      "awayScore": null,
+      "homeScore": 3,
+      "awayScore": 3,
       "homeBreaks": "",
       "awayBreaks": ""
     },
