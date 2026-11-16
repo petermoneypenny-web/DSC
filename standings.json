@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-11T09:36:17.090Z",
+  "updatedAt": "2026-11-16T09:14:05.270Z",
   "standings": [
     {
       "name": "Barry Garwood",
@@ -11,6 +11,17 @@
       "fl": 5,
       "bonus": 2,
       "points": 15
+    },
+    {
+      "name": "Jamie Dixon",
+      "played": 4,
+      "won": 1,
+      "drawn": 2,
+      "lost": 1,
+      "fw": 11,
+      "fl": 13,
+      "bonus": 0,
+      "points": 11
     },
     {
       "name": "Dan Cuthbert",
@@ -35,6 +46,17 @@
       "points": 8
     },
     {
+      "name": "Justin Housden",
+      "played": 2,
+      "won": 1,
+      "drawn": 1,
+      "lost": 0,
+      "fw": 7,
+      "fl": 5,
+      "bonus": 0,
+      "points": 7
+    },
+    {
       "name": "Pete Moneypenny",
       "played": 2,
       "won": 1,
@@ -46,11 +68,11 @@
       "points": 7
     },
     {
-      "name": "Jamie Dixon",
+      "name": "Gary Connelly",
       "played": 3,
       "won": 0,
-      "drawn": 2,
-      "lost": 1,
+      "drawn": 1,
+      "lost": 2,
       "fw": 7,
       "fl": 11,
       "bonus": 0,
@@ -79,6 +101,17 @@
       "points": 6
     },
     {
+      "name": "Alex Kirchin",
+      "played": 2,
+      "won": 1,
+      "drawn": 0,
+      "lost": 1,
+      "fw": 6,
+      "fl": 6,
+      "bonus": 0,
+      "points": 6
+    },
+    {
       "name": "Craig Ferris",
       "played": 3,
       "won": 0,
@@ -90,28 +123,6 @@
       "points": 6
     },
     {
-      "name": "Gary Connelly",
-      "played": 2,
-      "won": 0,
-      "drawn": 1,
-      "lost": 1,
-      "fw": 5,
-      "fl": 7,
-      "bonus": 0,
-      "points": 5
-    },
-    {
-      "name": "Alex Kirchin",
-      "played": 1,
-      "won": 1,
-      "drawn": 0,
-      "lost": 0,
-      "fw": 4,
-      "fl": 2,
-      "bonus": 0,
-      "points": 4
-    },
-    {
       "name": "Andy Keddo",
       "played": 2,
       "won": 1,
@@ -121,33 +132,42 @@
       "fl": 8,
       "bonus": 0,
       "points": 4
-    },
-    {
-      "name": "Justin Housden",
-      "played": 1,
-      "won": 0,
-      "drawn": 1,
-      "lost": 0,
-      "fw": 3,
-      "fl": 3,
-      "bonus": 0,
-      "points": 3
     }
   ],
   "breaks": [
     {
       "player": "Craig Ferris",
       "high": 73,
-      "total30": 7,
-      "total50": 2,
+      "total30": 11,
+      "total50": 5,
       "total100": 0,
       "list": [
         73,
+        72,
+        61,
+        53,
         52,
         48,
         43,
         39,
         32,
+        32,
+        32
+      ]
+    },
+    {
+      "player": "Barry Garwood",
+      "high": 58,
+      "total30": 7,
+      "total50": 2,
+      "total100": 0,
+      "list": [
+        58,
+        55,
+        35,
+        35,
+        33,
+        33,
         32
       ]
     },
@@ -175,6 +195,16 @@
       ]
     },
     {
+      "player": "Alex Kirchin",
+      "high": 36,
+      "total30": 1,
+      "total50": 0,
+      "total100": 0,
+      "list": [
+        36
+      ]
+    },
+    {
       "player": "Rory Dawson",
       "high": 35,
       "total30": 1,
@@ -182,18 +212,6 @@
       "total100": 0,
       "list": [
         35
-      ]
-    },
-    {
-      "player": "Barry Garwood",
-      "high": 33,
-      "total30": 3,
-      "total50": 0,
-      "total100": 0,
-      "list": [
-        33,
-        33,
-        32
       ]
     },
     {
@@ -238,14 +256,6 @@
     },
     {
       "player": "Adam Smith",
-      "high": 0,
-      "total30": 0,
-      "total50": 0,
-      "total100": 0,
-      "list": []
-    },
-    {
-      "player": "Alex Kirchin",
       "high": 0,
       "total30": 0,
       "total50": 0,
@@ -427,7 +437,7 @@
       "away": "Andy Keddo",
       "homeScore": 6,
       "awayScore": 0,
-      "homeBreaks": "",
+      "homeBreaks": "58,55,35,35",
       "awayBreaks": ""
     },
     {
@@ -906,13 +916,13 @@
     {
       "id": "F60",
       "leg": 1,
-      "date": "",
+      "date": "2026-11-10",
       "home": "Jamie Dixon",
       "away": "Alex Kirchin",
-      "homeScore": null,
-      "awayScore": null,
+      "homeScore": 4,
+      "awayScore": 2,
       "homeBreaks": "",
-      "awayBreaks": ""
+      "awayBreaks": "36"
     },
     {
       "id": "F61",
@@ -1324,11 +1334,11 @@
     {
       "id": "F98",
       "leg": 2,
-      "date": "",
+      "date": "2026-11-10",
       "home": "Justin Housden",
       "away": "Gary Connelly",
-      "homeScore": null,
-      "awayScore": null,
+      "homeScore": 4,
+      "awayScore": 2,
       "homeBreaks": "",
       "awayBreaks": ""
     },
@@ -1451,7 +1461,7 @@
       "homeScore": 3,
       "awayScore": 3,
       "homeBreaks": "",
-      "awayBreaks": ""
+      "awayBreaks": "72,61,53,32"
     },
     {
       "id": "F110",
