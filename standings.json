@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-23T12:52:59.348Z",
+  "updatedAt": "2026-11-25T11:19:01.869Z",
   "standings": [
     {
       "name": "Barry Garwood",
@@ -14,14 +14,25 @@
     },
     {
       "name": "Dan Cuthbert",
-      "played": 3,
+      "played": 4,
       "won": 3,
       "drawn": 0,
-      "lost": 0,
-      "fw": 14,
-      "fl": 4,
+      "lost": 1,
+      "fw": 16,
+      "fl": 8,
       "bonus": 0,
-      "points": 14
+      "points": 16
+    },
+    {
+      "name": "Pete Moneypenny",
+      "played": 3,
+      "won": 2,
+      "drawn": 1,
+      "lost": 0,
+      "fw": 11,
+      "fl": 7,
+      "bonus": 0,
+      "points": 11
     },
     {
       "name": "Jamie Dixon",
@@ -101,17 +112,6 @@
       "points": 8
     },
     {
-      "name": "Pete Moneypenny",
-      "played": 2,
-      "won": 1,
-      "drawn": 1,
-      "lost": 0,
-      "fw": 7,
-      "fl": 5,
-      "bonus": 0,
-      "points": 7
-    },
-    {
       "name": "Wayne Sampson",
       "played": 2,
       "won": 0,
@@ -176,24 +176,28 @@
     },
     {
       "player": "Dan Cuthbert",
-      "high": 48,
-      "total30": 4,
-      "total50": 0,
+      "high": 55,
+      "total30": 6,
+      "total50": 1,
       "total100": 0,
       "list": [
+        55,
         48,
         39,
         36,
-        36
+        36,
+        32
       ]
     },
     {
       "player": "Pete Moneypenny",
-      "high": 38,
-      "total30": 3,
+      "high": 40,
+      "total30": 5,
       "total50": 0,
       "total100": 0,
       "list": [
+        40,
+        38,
         38,
         32,
         31
@@ -558,13 +562,13 @@
     {
       "id": "F27",
       "leg": 1,
-      "date": "",
+      "date": "2026-11-24",
       "home": "Dan Cuthbert",
       "away": "Pete Moneypenny",
-      "homeScore": null,
-      "awayScore": null,
-      "homeBreaks": "",
-      "awayBreaks": ""
+      "homeScore": 2,
+      "awayScore": 4,
+      "homeBreaks": "55, 32",
+      "awayBreaks": "40, 38"
     },
     {
       "id": "F28",
