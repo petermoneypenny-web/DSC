@@ -1,16 +1,16 @@
 {
-  "updatedAt": "2026-11-25T11:19:01.869Z",
+  "updatedAt": "2026-11-25T12:25:50.866Z",
   "standings": [
     {
       "name": "Barry Garwood",
-      "played": 4,
+      "played": 5,
       "won": 3,
-      "drawn": 0,
+      "drawn": 1,
       "lost": 1,
-      "fw": 17,
-      "fl": 7,
+      "fw": 20,
+      "fl": 10,
       "bonus": 2,
-      "points": 19
+      "points": 22
     },
     {
       "name": "Dan Cuthbert",
@@ -24,6 +24,28 @@
       "points": 16
     },
     {
+      "name": "Rory Dawson",
+      "played": 4,
+      "won": 2,
+      "drawn": 2,
+      "lost": 0,
+      "fw": 15,
+      "fl": 9,
+      "bonus": 0,
+      "points": 15
+    },
+    {
+      "name": "Jamie Dixon",
+      "played": 5,
+      "won": 1,
+      "drawn": 3,
+      "lost": 1,
+      "fw": 14,
+      "fl": 16,
+      "bonus": 0,
+      "points": 14
+    },
+    {
       "name": "Pete Moneypenny",
       "played": 3,
       "won": 2,
@@ -33,28 +55,6 @@
       "fl": 7,
       "bonus": 0,
       "points": 11
-    },
-    {
-      "name": "Jamie Dixon",
-      "played": 4,
-      "won": 1,
-      "drawn": 2,
-      "lost": 1,
-      "fw": 11,
-      "fl": 13,
-      "bonus": 0,
-      "points": 11
-    },
-    {
-      "name": "Rory Dawson",
-      "played": 3,
-      "won": 1,
-      "drawn": 2,
-      "lost": 0,
-      "fw": 10,
-      "fl": 8,
-      "bonus": 0,
-      "points": 10
     },
     {
       "name": "Craig Ferris",
@@ -91,14 +91,14 @@
     },
     {
       "name": "Justin Housden",
-      "played": 3,
+      "played": 4,
       "won": 1,
       "drawn": 1,
-      "lost": 1,
-      "fw": 8,
-      "fl": 10,
+      "lost": 2,
+      "fw": 9,
+      "fl": 15,
       "bonus": 0,
-      "points": 8
+      "points": 9
     },
     {
       "name": "Alex Kirchin",
@@ -452,11 +452,11 @@
     {
       "id": "F17",
       "leg": 1,
-      "date": "",
+      "date": "2026-11-24",
       "home": "Barry Garwood",
       "away": "Jamie Dixon",
-      "homeScore": null,
-      "awayScore": null,
+      "homeScore": 3,
+      "awayScore": 3,
       "homeBreaks": "",
       "awayBreaks": ""
     },
@@ -1046,11 +1046,11 @@
     {
       "id": "F71",
       "leg": 2,
-      "date": "",
+      "date": "2026-11-24",
       "home": "Justin Housden",
       "away": "Rory Dawson",
-      "homeScore": null,
-      "awayScore": null,
+      "homeScore": 1,
+      "awayScore": 5,
       "homeBreaks": "",
       "awayBreaks": ""
     },
