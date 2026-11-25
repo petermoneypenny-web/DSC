@@ -1,5 +1,12 @@
 [
   {
+    "filename": "snapshot_2026-11-25T11-19-01-869Z.json",
+    "path": "backups/snapshot_2026-11-25T11-19-01-869Z.json",
+    "timestamp": "2026-11-25T11:19:01.869Z",
+    "playersCount": 12,
+    "fixturesCount": 132
+  },
+  {
     "filename": "snapshot_2026-11-23T12-52-59-348Z.json",
     "path": "backups/snapshot_2026-11-23T12-52-59-348Z.json",
     "timestamp": "2026-11-23T12:52:59.348Z",
@@ -24,13 +31,6 @@
     "filename": "snapshot_2026-11-11T09-16-27-412Z.json",
     "path": "backups/snapshot_2026-11-11T09-16-27-412Z.json",
     "timestamp": "2026-11-11T09:16:27.412Z",
-    "playersCount": 12,
-    "fixturesCount": 132
-  },
-  {
-    "filename": "snapshot_2026-11-09T15-59-33-526Z.json",
-    "path": "backups/snapshot_2026-11-09T15-59-33-526Z.json",
-    "timestamp": "2026-11-09T15:59:33.526Z",
     "playersCount": 12,
     "fixturesCount": 132
   }
